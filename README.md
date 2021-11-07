@@ -1,4 +1,4 @@
-# BobcatRecycler v 0.1 for Windows
+# Bobcat Recycler v 0.1 for Windows
 Bobcat helium miner monitoring and reset/resync tool for Windows.
 
 # Description:
