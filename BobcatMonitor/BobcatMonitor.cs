@@ -21,7 +21,7 @@ namespace BobcatMonitor
         public BobcatWindowsMonitor()
         {
             InitializeComponent();
-            comboBoxResetOperation.SelectedIndex = 1;
+            comboBoxResetOperation.SelectedIndex = 2;
             buttonStopMonitoring.Enabled = false;
         }
 
@@ -377,7 +377,7 @@ namespace BobcatMonitor
                                     Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
                                 }
 
-                                SetRichTextBoxStatus("Fast syncing miner... Waiting " + textBoxDelay.Text + " seconds.", false);
+                                SetRichTextBoxStatus("Fast syncing miner...", false);
                                 fastSync();
                                 var waitAfterCycle = Convert.ToInt32(textBoxWaitAfterCycle.Text) * 1000;
 
@@ -441,7 +441,7 @@ namespace BobcatMonitor
             catch (Exception ex)
             {
              //  This will display only timeout operation, no need to display
-             //   SetRichTextBoxStatus("Reboot status: " + ex.Message);
+                SetRichTextBoxStatus("Reboot status: " + ex.Message);
             }
         }
 

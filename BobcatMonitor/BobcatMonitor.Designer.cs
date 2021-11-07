@@ -401,10 +401,10 @@ namespace BobcatMonitor
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(21, 503);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(586, 13);
+            this.label1.Size = new System.Drawing.Size(537, 13);
             this.label1.TabIndex = 16;
-            this.label1.Text = "** Increase pause if your internet connection is not fast enough to avoid infinit" +
-    "e reset/resync loop or increase Gap threshold";
+            this.label1.Text = "** Increase pause or Gap treshold if your internet connection is not fast enough " +
+    "to avoid infinite reset/resync loop";
             // 
             // labelSettingsComment1
             // 
@@ -413,7 +413,7 @@ namespace BobcatMonitor
             this.labelSettingsComment1.Name = "labelSettingsComment1";
             this.labelSettingsComment1.Size = new System.Drawing.Size(291, 13);
             this.labelSettingsComment1.TabIndex = 15;
-            this.labelSettingsComment1.Text = "* Increase delay (default 400) if your miner is not fast enough";
+            this.labelSettingsComment1.Text = "* Increase delay (default 420) if your miner is not fast enough";
             // 
             // labelresetOperation
             // 
@@ -433,7 +433,7 @@ namespace BobcatMonitor
             "Reset + Resync + Fast sync"});
             this.comboBoxResetOperation.Location = new System.Drawing.Point(260, 190);
             this.comboBoxResetOperation.Name = "comboBoxResetOperation";
-            this.comboBoxResetOperation.Size = new System.Drawing.Size(148, 21);
+            this.comboBoxResetOperation.Size = new System.Drawing.Size(156, 21);
             this.comboBoxResetOperation.TabIndex = 13;
             // 
             // labelWaitAfterCycle
@@ -450,7 +450,7 @@ namespace BobcatMonitor
             // 
             this.textBoxWaitAfterCycle.Location = new System.Drawing.Point(260, 313);
             this.textBoxWaitAfterCycle.Name = "textBoxWaitAfterCycle";
-            this.textBoxWaitAfterCycle.Size = new System.Drawing.Size(147, 20);
+            this.textBoxWaitAfterCycle.Size = new System.Drawing.Size(156, 20);
             this.textBoxWaitAfterCycle.TabIndex = 10;
             this.textBoxWaitAfterCycle.Text = "3600";
             // 
@@ -467,7 +467,7 @@ namespace BobcatMonitor
             // 
             this.textBoxRefreshInterval.Location = new System.Drawing.Point(260, 99);
             this.textBoxRefreshInterval.Name = "textBoxRefreshInterval";
-            this.textBoxRefreshInterval.Size = new System.Drawing.Size(147, 20);
+            this.textBoxRefreshInterval.Size = new System.Drawing.Size(156, 20);
             this.textBoxRefreshInterval.TabIndex = 8;
             this.textBoxRefreshInterval.Text = "10";
             this.textBoxRefreshInterval.TextChanged += new System.EventHandler(this.textBoxRefreshInterval_TextChanged);
@@ -485,7 +485,7 @@ namespace BobcatMonitor
             // 
             this.textBoxGap.Location = new System.Drawing.Point(260, 234);
             this.textBoxGap.Name = "textBoxGap";
-            this.textBoxGap.Size = new System.Drawing.Size(147, 20);
+            this.textBoxGap.Size = new System.Drawing.Size(156, 20);
             this.textBoxGap.TabIndex = 6;
             this.textBoxGap.Text = "20";
             // 
@@ -503,9 +503,9 @@ namespace BobcatMonitor
             // 
             this.textBoxDelay.Location = new System.Drawing.Point(260, 274);
             this.textBoxDelay.Name = "textBoxDelay";
-            this.textBoxDelay.Size = new System.Drawing.Size(147, 20);
+            this.textBoxDelay.Size = new System.Drawing.Size(156, 20);
             this.textBoxDelay.TabIndex = 4;
-            this.textBoxDelay.Text = "400";
+            this.textBoxDelay.Text = "420";
             // 
             // labelAuthorizationKey
             // 
@@ -520,7 +520,7 @@ namespace BobcatMonitor
             // 
             this.textBoxAuthorizationKey.Location = new System.Drawing.Point(261, 62);
             this.textBoxAuthorizationKey.Name = "textBoxAuthorizationKey";
-            this.textBoxAuthorizationKey.Size = new System.Drawing.Size(147, 20);
+            this.textBoxAuthorizationKey.Size = new System.Drawing.Size(155, 20);
             this.textBoxAuthorizationKey.TabIndex = 2;
             this.textBoxAuthorizationKey.Text = "Ym9iY2F0Om1pbmVy";
             this.textBoxAuthorizationKey.TextChanged += new System.EventHandler(this.textBoxAuthorizationKey_TextChanged);
@@ -538,7 +538,7 @@ namespace BobcatMonitor
             // 
             this.textBoxIpAddress.Location = new System.Drawing.Point(260, 25);
             this.textBoxIpAddress.Name = "textBoxIpAddress";
-            this.textBoxIpAddress.Size = new System.Drawing.Size(147, 20);
+            this.textBoxIpAddress.Size = new System.Drawing.Size(156, 20);
             this.textBoxIpAddress.TabIndex = 0;
             this.textBoxIpAddress.TextChanged += new System.EventHandler(this.textBoxIpAddress_TextChanged);
             // 
@@ -632,7 +632,7 @@ namespace BobcatMonitor
             this.labelAbout3.Name = "labelAbout3";
             this.labelAbout3.Size = new System.Drawing.Size(740, 16);
             this.labelAbout3.TabIndex = 2;
-            this.labelAbout3.Text = "If Gap goes above specified treshhold (default 15), Bobcat will be cycled - Reset" +
+            this.labelAbout3.Text = "If Gap goes above specified treshhold (default 20), Bobcat will be cycled - Reset" +
     " + Fast sync  or  Reset + Resync + Fast sync";
             // 
             // labelAbout2

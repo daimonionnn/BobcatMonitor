@@ -28,7 +28,6 @@ C:\Development\BobcatMonitor\BobcatMonitor\bin\Debug\BobcatMonitor.exe
 C:\Development\BobcatMonitor\BobcatMonitor\bin\Debug\BobcatMonitor.pdb
 C:\Development\BobcatMonitor\BobcatMonitor\bin\Debug\Newtonsoft.Json.dll
 C:\Development\BobcatMonitor\BobcatMonitor\bin\Debug\Newtonsoft.Json.xml
-C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.csproj.AssemblyReference.cache
 C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.BobcatWindowsMonitor.resources
 C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.Properties.Resources.resources
 C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.csproj.GenerateResource.cache
