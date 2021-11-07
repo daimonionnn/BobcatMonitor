@@ -23,3 +23,16 @@ C:\Development\BobcatRecycler\BobcatRecycler\obj\Debug\BobcatMonitor.csproj.Core
 C:\Development\BobcatRecycler\BobcatRecycler\obj\Debug\BobcatMonitor.csproj.CopyComplete
 C:\Development\BobcatRecycler\BobcatRecycler\obj\Debug\BobcatMonitor.exe
 C:\Development\BobcatRecycler\BobcatRecycler\obj\Debug\BobcatMonitor.pdb
+C:\Development\BobcatMonitor\BobcatMonitor\bin\Debug\BobcatMonitor.exe.config
+C:\Development\BobcatMonitor\BobcatMonitor\bin\Debug\BobcatMonitor.exe
+C:\Development\BobcatMonitor\BobcatMonitor\bin\Debug\BobcatMonitor.pdb
+C:\Development\BobcatMonitor\BobcatMonitor\bin\Debug\Newtonsoft.Json.dll
+C:\Development\BobcatMonitor\BobcatMonitor\bin\Debug\Newtonsoft.Json.xml
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.csproj.AssemblyReference.cache
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.BobcatWindowsMonitor.resources
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.Properties.Resources.resources
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.csproj.GenerateResource.cache
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.csproj.CoreCompileInputs.cache
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.csproj.CopyComplete
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.exe
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.pdb

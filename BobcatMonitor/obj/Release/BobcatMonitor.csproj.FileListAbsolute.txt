@@ -1,0 +1,12 @@
+C:\Development\BobcatMonitor\BobcatMonitor\bin\Release\BobcatMonitor.exe.config
+C:\Development\BobcatMonitor\BobcatMonitor\bin\Release\BobcatMonitor.exe
+C:\Development\BobcatMonitor\BobcatMonitor\bin\Release\BobcatMonitor.pdb
+C:\Development\BobcatMonitor\BobcatMonitor\bin\Release\Newtonsoft.Json.dll
+C:\Development\BobcatMonitor\BobcatMonitor\bin\Release\Newtonsoft.Json.xml
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Release\BobcatMonitor.BobcatWindowsMonitor.resources
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Release\BobcatMonitor.Properties.Resources.resources
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Release\BobcatMonitor.csproj.GenerateResource.cache
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Release\BobcatMonitor.csproj.CoreCompileInputs.cache
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Release\BobcatMonitor.csproj.CopyComplete
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Release\BobcatMonitor.exe
+C:\Development\BobcatMonitor\BobcatMonitor\obj\Release\BobcatMonitor.pdb

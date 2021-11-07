@@ -540,7 +540,6 @@ namespace BobcatMonitor
             this.textBoxIpAddress.Name = "textBoxIpAddress";
             this.textBoxIpAddress.Size = new System.Drawing.Size(147, 20);
             this.textBoxIpAddress.TabIndex = 0;
-            this.textBoxIpAddress.Text = "192.168.1.90";
             this.textBoxIpAddress.TextChanged += new System.EventHandler(this.textBoxIpAddress_TextChanged);
             // 
             // tabPageAbout
