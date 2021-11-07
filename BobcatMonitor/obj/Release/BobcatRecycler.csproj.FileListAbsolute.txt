@@ -1,0 +1,12 @@
+C:\Development\BobcatRecycler\BobcatRecycler\bin\Release\BobcatRecycler.exe.config
+C:\Development\BobcatRecycler\BobcatRecycler\bin\Release\BobcatRecycler.exe
+C:\Development\BobcatRecycler\BobcatRecycler\bin\Release\BobcatRecycler.pdb
+C:\Development\BobcatRecycler\BobcatRecycler\bin\Release\Newtonsoft.Json.dll
+C:\Development\BobcatRecycler\BobcatRecycler\bin\Release\Newtonsoft.Json.xml
+C:\Development\BobcatRecycler\BobcatRecycler\obj\Release\BobcatMonitor.BobcatWindowsMonitor.resources
+C:\Development\BobcatRecycler\BobcatRecycler\obj\Release\BobcatRecycler.Properties.Resources.resources
+C:\Development\BobcatRecycler\BobcatRecycler\obj\Release\BobcatRecycler.csproj.GenerateResource.cache
+C:\Development\BobcatRecycler\BobcatRecycler\obj\Release\BobcatRecycler.csproj.CoreCompileInputs.cache
+C:\Development\BobcatRecycler\BobcatRecycler\obj\Release\BobcatRecycler.csproj.CopyComplete
+C:\Development\BobcatRecycler\BobcatRecycler\obj\Release\BobcatRecycler.exe
+C:\Development\BobcatRecycler\BobcatRecycler\obj\Release\BobcatRecycler.pdb
