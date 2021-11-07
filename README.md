@@ -8,9 +8,11 @@ If Gap goes above specified treshold (default 20), Bobcat will be automatically 
 It was developed especially for (but not only) defective Bobcat miners - some of them are resetting several times a day and are unable to sync.
 The only temporary solution to fix this is RESET + FAST SYNC or RESYNC + FAST SYNC.
 
+# Installation
+Download zip file from Binaries directory, extract and run
 
 # Platform
-This is Windows application (Windows forms, .net framework 4.7.2) but I plan cmd app for Linux and Windows. 
+This is Windows only application (Windows forms, .net framework 4.7.2) but I plan cmd app for Linux and Windows. 
 
 # Donation
 
