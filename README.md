@@ -25,10 +25,12 @@ Thank You
 
 v 0.3
 Fixed bug when monitoring was stopped after unsuccessful data read from Bobcat (or appeared like it stopped as Start monitoring button was activated)
+
 Added autoscroll to status box
 
 v 0.2
 Project was renamed from Bobcat Recycler to Bobcat Monitor and JumpStarter
+
 Some bug fixes and adjusted default delay/pause times
 
 v 0.1
