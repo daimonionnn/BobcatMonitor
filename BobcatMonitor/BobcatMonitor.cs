@@ -305,19 +305,19 @@ namespace BobcatMonitor
                                 if (comboBoxResetOperation.SelectedIndex == 1 || comboBoxResetOperation.SelectedIndex == 2)
                                 {
                                     SetRichTextBoxStatus("Gap is " + gap + " !" + " Reseting miner... Waiting " + textBoxDelay.Text + " seconds.", false);
-                               //     reset();
+                                    reset();
                                     Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
                                 }
 
                                 if (comboBoxResetOperation.SelectedIndex == 2)
                                 {
                                     SetRichTextBoxStatus("Resyncing miner... Waiting " + textBoxDelay.Text + " seconds.", false);
-                                //    resync();
+                                    resync();
                                     Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
                                 }
 
                                 SetRichTextBoxStatus("Fast syncing miner...", false);
-                               // fastSync();
+                                fastSync();
                                 var waitAfterCycle = Convert.ToInt32(textBoxWaitAfterCycle.Text) * 1000;
 
                                 SetRichTextBoxStatus("Waiting " + waitAfterCycle / 1000 + " seconds.", false);
