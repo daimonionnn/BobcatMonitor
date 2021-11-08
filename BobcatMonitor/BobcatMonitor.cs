@@ -41,7 +41,7 @@ namespace BobcatMonitor
         delegate void SetTextCallback(string text, bool clear);
         delegate void setButtonEnabledCallback(bool enabled);
 
-        void GetData()
+        bool GetData()
         {
             try
             {
@@ -71,63 +71,26 @@ namespace BobcatMonitor
                     SetLabelStatusResult(status);
                 }
 
+                return true;
+
             }
 
             catch (WebException ex)
             {
-
-                SetRichTextBoxStatus("GetData:" + ex.Message);
-                SetStartButtonEnabled(true);
-                throw;
+                SetRichTextBoxStatus("Get data from miner:" + ex.Message);
+                return false;               
             }
 
             catch (Exception ex)
             {
 
-                SetRichTextBoxStatus("GetData:" + ex.Message);
-                SetStartButtonEnabled(true);
+                SetRichTextBoxStatus("Get data from miner:" + ex.Message);
+                return false;               
             }
         }
 
-        void GetDataManual()
-        {
-            try
-            {
-                using (WebClient wc = new WebClient())
-                {
-                    var deserializedStatus = new Object();
-                    var json = wc.DownloadString("http://" + textBoxIpAddress.Text + "/miner.json");
-                    var miner = JsonConvert.DeserializeObject<dynamic>(json);
-
-                    gap = Convert.ToString(Convert.ToInt32(miner.blockchain_height) - Convert.ToInt32(miner.miner_height));
-                    SetLabelGapResult(gap);
-
-                    var lastUpdate = DateTime.Now.ToLongTimeString();
-                    SetLabelLastUpdateResult(lastUpdate);
-                    var temp0 = GetNumbers(Convert.ToString(miner.temp0));
-                    SetLabelTemp0Result(temp0);
-                    var temp1 = GetNumbers(Convert.ToString(miner.temp1));
-                    SetLabelTemp1Result(temp1);
-                    var animal = Convert.ToString(miner.animal);
-                    SetLabelAnimal(animal);
-
-                    var otaVersion = Convert.ToString(miner.ota_version);
-                    SetLabelOtaVersionResult(otaVersion);
-                    var state = Convert.ToString(miner.miner.State);
-                    SetLabelStateResult(state);
-                    var status = Convert.ToString(miner.miner.Status);
-                    SetLabelStatusResult(status);
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                SetRichTextBoxStatus("GetData:" + ex.Message);
-            }
-        }
-
-            static string GetNumbers(string input)
+      
+        static string GetNumbers(string input)
         {
             return new string(input.Where(c => char.IsDigit(c)).ToArray());
         }
@@ -312,10 +275,8 @@ namespace BobcatMonitor
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-
             try
             {
-
                 if (string.IsNullOrWhiteSpace(textBoxIpAddress.Text))
                     throw new Exception("Please enter your Bobcat miner valid IP adress in settings tab.");
 
@@ -331,54 +292,32 @@ namespace BobcatMonitor
                 buttonStart.Enabled = false;
                 buttonStopMonitoring.Enabled = true;
 
-                //Parallel.For(0, 1, count =>
-                //{
-
-                //    for (; ; ) {
-                //        richTextBoxStatus.Text = ($"value of count = {count}, thread = {Thread.CurrentThread.ManagedThreadId}");
-                //        Thread.Sleep(20000);
-
-                //    }
-                //});
-
                 Task task = Task.Factory.StartNew(() =>
                 {
                     for (; ; )
                     {
-                        //if (monitoringStopped)
-                        //{
-                        //    SetRichTextBoxStatus("Monitoring stopped.");
-                        //    monitoringStopped = false; // after stopping need to set this flag to false, otherwise monitoring can't be started
-                        //    buttonStopMonitoring.Enabled = false;
-                        //    SetStartButtonEnabled(true);
-                        //    break;
-                        //}
-
-                        GetData();
+                        var getDataResult = GetData();
                         
-
                         try
                         {
-                            if ((Convert.ToInt32(gap) >= Convert.ToInt32(textBoxGap.Text)) && comboBoxResetOperation.SelectedIndex > 0)
+                            if (getDataResult && (Convert.ToInt32(gap) >= Convert.ToInt32(textBoxGap.Text)) && comboBoxResetOperation.SelectedIndex > 0)
                             {
-
-
                                 if (comboBoxResetOperation.SelectedIndex == 1 || comboBoxResetOperation.SelectedIndex == 2)
                                 {
                                     SetRichTextBoxStatus("Gap is " + gap + " !" + " Reseting miner... Waiting " + textBoxDelay.Text + " seconds.", false);
-                                    reset();
+                               //     reset();
                                     Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
                                 }
 
                                 if (comboBoxResetOperation.SelectedIndex == 2)
                                 {
                                     SetRichTextBoxStatus("Resyncing miner... Waiting " + textBoxDelay.Text + " seconds.", false);
-                                    resync();
+                                //    resync();
                                     Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
                                 }
 
                                 SetRichTextBoxStatus("Fast syncing miner...", false);
-                                fastSync();
+                               // fastSync();
                                 var waitAfterCycle = Convert.ToInt32(textBoxWaitAfterCycle.Text) * 1000;
 
                                 SetRichTextBoxStatus("Waiting " + waitAfterCycle / 1000 + " seconds.", false);
@@ -399,19 +338,15 @@ namespace BobcatMonitor
                                     monitoringStopped = false; // after stopping need to set this flag to false, otherwise monitoring can't be started
                                     buttonStopMonitoring.Enabled = false;
                                     SetStartButtonEnabled(true);
-                                    return; ;
+                                    return;
                                 }
 
                             }
 
-
-
-
-
                         }
                         catch (Exception ex)
                         {
-                            SetRichTextBoxStatus("Miner cycling status: " + ex.Message);
+                            SetRichTextBoxStatus("Monitoring error: " + ex.Message);
                             SetStartButtonEnabled(true);
                         }
 
@@ -597,6 +532,13 @@ namespace BobcatMonitor
         private void tabPageAbout_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void richTextBoxStatus_TextChanged(object sender, EventArgs e)
+        {
+            richTextBoxStatus.SelectionStart = richTextBoxStatus.Text.Length;
+            // scroll it automatically
+            richTextBoxStatus.ScrollToCaret();
         }
     }
 }

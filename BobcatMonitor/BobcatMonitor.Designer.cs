@@ -322,7 +322,7 @@ namespace BobcatMonitor
             // labelStatusRichText
             // 
             this.labelStatusRichText.AutoSize = true;
-            this.labelStatusRichText.Location = new System.Drawing.Point(12, 340);
+            this.labelStatusRichText.Location = new System.Drawing.Point(9, 340);
             this.labelStatusRichText.Name = "labelStatusRichText";
             this.labelStatusRichText.Size = new System.Drawing.Size(40, 13);
             this.labelStatusRichText.TabIndex = 5;
@@ -330,11 +330,14 @@ namespace BobcatMonitor
             // 
             // richTextBoxStatus
             // 
-            this.richTextBoxStatus.Location = new System.Drawing.Point(7, 368);
+            this.richTextBoxStatus.BackColor = System.Drawing.Color.White;
+            this.richTextBoxStatus.Location = new System.Drawing.Point(8, 368);
             this.richTextBoxStatus.Name = "richTextBoxStatus";
+            this.richTextBoxStatus.ReadOnly = true;
             this.richTextBoxStatus.Size = new System.Drawing.Size(872, 152);
             this.richTextBoxStatus.TabIndex = 4;
             this.richTextBoxStatus.Text = "";
+            this.richTextBoxStatus.TextChanged += new System.EventHandler(this.richTextBoxStatus_TextChanged);
             // 
             // buttonResync
             // 
@@ -653,7 +656,7 @@ namespace BobcatMonitor
             this.labelAbout1.Name = "labelAbout1";
             this.labelAbout1.Size = new System.Drawing.Size(498, 25);
             this.labelAbout1.TabIndex = 0;
-            this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.2";
+            this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.3";
             // 
             // BobcatWindowsMonitor
             // 
