@@ -16,12 +16,12 @@ namespace BobcatMonitor
     public partial class BobcatWindowsMonitor : Form
     {
 
-        string gap = string.Empty;
+        int gap = 0;
         bool monitoringStopped = false;
         public BobcatWindowsMonitor()
         {
             InitializeComponent();
-            comboBoxResetOperation.SelectedIndex = 2;
+            comboBoxResetOperation.SelectedIndex = 1;
             buttonStopMonitoring.Enabled = false;
         }
 
@@ -51,8 +51,8 @@ namespace BobcatMonitor
                     var json = wc.DownloadString("http://" + textBoxIpAddress.Text + "/miner.json");
                     var miner = JsonConvert.DeserializeObject<dynamic>(json);
 
-                    gap = Convert.ToString(Convert.ToInt32(miner.blockchain_height) - Convert.ToInt32(miner.miner_height));
-                    SetLabelGapResult(gap);
+                    gap = Convert.ToInt32(Convert.ToInt32(miner.blockchain_height) - Convert.ToInt32(miner.miner_height));
+                    SetLabelGapResult(gap.ToString());
                    
                     var lastUpdate = DateTime.Now.ToLongTimeString();
                     SetLabelLastUpdateResult(lastUpdate);
@@ -153,7 +153,7 @@ namespace BobcatMonitor
 
                 if (Convert.ToInt32(text) > 70)
                 {
-                    this.labelTemp0Result.ForeColor = Color.Orange;
+                    this.labelTemp0Result.ForeColor = Color.DarkOrange;
                 }
                 else if (Convert.ToInt32(text) > 80)
                 {
@@ -179,7 +179,7 @@ namespace BobcatMonitor
             {
                 if (Convert.ToInt32(text) > 70)
                 {
-                    this.labelTemp1Result.ForeColor = Color.Orange;
+                    this.labelTemp1Result.ForeColor = Color.DarkOrange;
                 }
                 else if (Convert.ToInt32(text) > 80)
                 {
@@ -294,30 +294,45 @@ namespace BobcatMonitor
 
                 Task task = Task.Factory.StartNew(() =>
                 {
-                    for (; ; )
+                for (; ; )
+                {
+                    var getDataResult = GetData();
+
+                    try
                     {
-                        var getDataResult = GetData();
-                        
-                        try
+                        if (getDataResult && (gap >= Convert.ToInt32(textBoxGap.Text)) && comboBoxResetOperation.SelectedIndex > 0)
                         {
-                            if (getDataResult && (Convert.ToInt32(gap) >= Convert.ToInt32(textBoxGap.Text)) && comboBoxResetOperation.SelectedIndex > 0)
+                            if (comboBoxResetOperation.SelectedIndex == 1 || comboBoxResetOperation.SelectedIndex == 2)
                             {
-                                if (comboBoxResetOperation.SelectedIndex == 1 || comboBoxResetOperation.SelectedIndex == 2)
-                                {
-                                    SetRichTextBoxStatus("Gap is " + gap + " !" + " Reseting miner... Waiting " + textBoxDelay.Text + " seconds.", false);
-                                    reset();
-                                    Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
-                                }
+                                SetRichTextBoxStatus("Gap is " + gap + " !" + " Reseting miner... Waiting " + textBoxDelay.Text + " seconds.", false);
+                                reset();
 
-                                if (comboBoxResetOperation.SelectedIndex == 2)
-                                {
-                                    SetRichTextBoxStatus("Resyncing miner... Waiting " + textBoxDelay.Text + " seconds.", false);
-                                    resync();
-                                    Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
-                                }
+                                Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
+                            }
 
-                                SetRichTextBoxStatus("Fast syncing miner...", false);
-                                fastSync();
+                            if (comboBoxResetOperation.SelectedIndex == 2)
+                            {
+                                SetRichTextBoxStatus("Resyncing miner... Waiting " + textBoxDelay.Text + " seconds.", false);
+                                resync();
+                                Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
+                            }
+
+
+                            getDataResult = GetData();
+
+                                var fastSyncGapThreshold = Convert.ToInt32(textBoxFastSyncGapThreshold.Text);
+
+                                if (getDataResult && (gap <= fastSyncGapThreshold) )
+                                {
+                                    SetRichTextBoxStatus("No need to run Fast sync. Gap is lower than " + textBoxFastSyncGapThreshold.Text, false);
+                                }
+                                else
+                                {
+                                    SetRichTextBoxStatus("Fast syncing miner...", false);
+                                    fastSync();
+                                }
+                                
+                                
                                 var waitAfterCycle = Convert.ToInt32(textBoxWaitAfterCycle.Text) * 1000;
 
                                 SetRichTextBoxStatus("Waiting " + waitAfterCycle / 1000 + " seconds.", false);
@@ -329,7 +344,6 @@ namespace BobcatMonitor
                             // I will devide sleep into 500 iterations, so I can finish thread much earlier in case Stop monitoring button is pressed
                             for (int i = 0; i < 500; i++)
                             {
-
                                 Thread.Sleep(Convert.ToInt32(textBoxRefreshInterval.Text) * 60 * 2);
 
                                 if (monitoringStopped)

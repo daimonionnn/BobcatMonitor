@@ -1,4 +1,4 @@
-# Bobcat Monitor and JumpStarter v 0.3 for Windows
+# Bobcat Monitor and JumpStarter v 0.4 for Windows
 Bobcat helium miner monitoring and reset/resync tool for Windows
 
 # Description
@@ -22,6 +22,9 @@ If you like this app and would like to support further development (Linux and cm
 Thank You
 
 # Release info
+
+v 0.4
+Fast sync will be not run if Gap after reset/resync is below 400.
 
 v 0.3
 Fixed bug when monitoring was stopped after unsuccessful data read from Bobcat (or appeared like it stopped as Start monitoring button was activated)

@@ -57,7 +57,10 @@ namespace BobcatMonitor
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonReboot = new System.Windows.Forms.Button();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelSettingsComment3 = new System.Windows.Forms.Label();
+            this.labelFastSyncTreshold = new System.Windows.Forms.Label();
+            this.textBoxFastSyncGapThreshold = new System.Windows.Forms.TextBox();
+            this.labelSettingsComment2 = new System.Windows.Forms.Label();
             this.labelSettingsComment1 = new System.Windows.Forms.Label();
             this.labelresetOperation = new System.Windows.Forms.Label();
             this.comboBoxResetOperation = new System.Windows.Forms.ComboBox();
@@ -374,7 +377,10 @@ namespace BobcatMonitor
             // 
             // tabPageSettings
             // 
-            this.tabPageSettings.Controls.Add(this.label1);
+            this.tabPageSettings.Controls.Add(this.labelSettingsComment3);
+            this.tabPageSettings.Controls.Add(this.labelFastSyncTreshold);
+            this.tabPageSettings.Controls.Add(this.textBoxFastSyncGapThreshold);
+            this.tabPageSettings.Controls.Add(this.labelSettingsComment2);
             this.tabPageSettings.Controls.Add(this.labelSettingsComment1);
             this.tabPageSettings.Controls.Add(this.labelresetOperation);
             this.tabPageSettings.Controls.Add(this.comboBoxResetOperation);
@@ -399,20 +405,47 @@ namespace BobcatMonitor
             this.tabPageSettings.UseVisualStyleBackColor = true;
             this.tabPageSettings.Click += new System.EventHandler(this.tabPageSettings_Click);
             // 
-            // label1
+            // labelSettingsComment3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 503);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(537, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "** Increase pause or Gap treshold if your internet connection is not fast enough " +
-    "to avoid infinite reset/resync loop";
+            this.labelSettingsComment3.AutoSize = true;
+            this.labelSettingsComment3.Location = new System.Drawing.Point(21, 503);
+            this.labelSettingsComment3.Name = "labelSettingsComment3";
+            this.labelSettingsComment3.Size = new System.Drawing.Size(738, 13);
+            this.labelSettingsComment3.TabIndex = 19;
+            this.labelSettingsComment3.Text = "*** After Reset/Resync operation, Fast sync  will be run only if Gap is above thi" +
+    "s value. This is default Bobcat value and It is not recommended to change it.";
+            // 
+            // labelFastSyncTreshold
+            // 
+            this.labelFastSyncTreshold.AutoSize = true;
+            this.labelFastSyncTreshold.Location = new System.Drawing.Point(20, 355);
+            this.labelFastSyncTreshold.Name = "labelFastSyncTreshold";
+            this.labelFastSyncTreshold.Size = new System.Drawing.Size(142, 13);
+            this.labelFastSyncTreshold.TabIndex = 18;
+            this.labelFastSyncTreshold.Text = "*** Fast sync Gap threshold :";
+            // 
+            // textBoxFastSyncGapThreshold
+            // 
+            this.textBoxFastSyncGapThreshold.Location = new System.Drawing.Point(265, 352);
+            this.textBoxFastSyncGapThreshold.Name = "textBoxFastSyncGapThreshold";
+            this.textBoxFastSyncGapThreshold.Size = new System.Drawing.Size(156, 20);
+            this.textBoxFastSyncGapThreshold.TabIndex = 17;
+            this.textBoxFastSyncGapThreshold.Text = "400";
+            // 
+            // labelSettingsComment2
+            // 
+            this.labelSettingsComment2.AutoSize = true;
+            this.labelSettingsComment2.Location = new System.Drawing.Point(21, 475);
+            this.labelSettingsComment2.Name = "labelSettingsComment2";
+            this.labelSettingsComment2.Size = new System.Drawing.Size(543, 13);
+            this.labelSettingsComment2.TabIndex = 16;
+            this.labelSettingsComment2.Text = "** Increase pause or Gap threshold if your internet connection is not fast enough" +
+    " to avoid infinite reset/resync loop";
             // 
             // labelSettingsComment1
             // 
             this.labelSettingsComment1.AutoSize = true;
-            this.labelSettingsComment1.Location = new System.Drawing.Point(20, 478);
+            this.labelSettingsComment1.Location = new System.Drawing.Point(20, 450);
             this.labelSettingsComment1.Name = "labelSettingsComment1";
             this.labelSettingsComment1.Size = new System.Drawing.Size(291, 13);
             this.labelSettingsComment1.TabIndex = 15;
@@ -434,7 +467,7 @@ namespace BobcatMonitor
             "Disabled",
             "Reset + Fast sync",
             "Reset + Resync + Fast sync"});
-            this.comboBoxResetOperation.Location = new System.Drawing.Point(260, 190);
+            this.comboBoxResetOperation.Location = new System.Drawing.Point(265, 190);
             this.comboBoxResetOperation.Name = "comboBoxResetOperation";
             this.comboBoxResetOperation.Size = new System.Drawing.Size(156, 21);
             this.comboBoxResetOperation.TabIndex = 13;
@@ -442,7 +475,7 @@ namespace BobcatMonitor
             // labelWaitAfterCycle
             // 
             this.labelWaitAfterCycle.AutoSize = true;
-            this.labelWaitAfterCycle.Location = new System.Drawing.Point(13, 316);
+            this.labelWaitAfterCycle.Location = new System.Drawing.Point(20, 316);
             this.labelWaitAfterCycle.Name = "labelWaitAfterCycle";
             this.labelWaitAfterCycle.Size = new System.Drawing.Size(238, 13);
             this.labelWaitAfterCycle.TabIndex = 11;
@@ -451,7 +484,7 @@ namespace BobcatMonitor
             // 
             // textBoxWaitAfterCycle
             // 
-            this.textBoxWaitAfterCycle.Location = new System.Drawing.Point(260, 313);
+            this.textBoxWaitAfterCycle.Location = new System.Drawing.Point(265, 313);
             this.textBoxWaitAfterCycle.Name = "textBoxWaitAfterCycle";
             this.textBoxWaitAfterCycle.Size = new System.Drawing.Size(156, 20);
             this.textBoxWaitAfterCycle.TabIndex = 10;
@@ -468,7 +501,7 @@ namespace BobcatMonitor
             // 
             // textBoxRefreshInterval
             // 
-            this.textBoxRefreshInterval.Location = new System.Drawing.Point(260, 99);
+            this.textBoxRefreshInterval.Location = new System.Drawing.Point(265, 99);
             this.textBoxRefreshInterval.Name = "textBoxRefreshInterval";
             this.textBoxRefreshInterval.Size = new System.Drawing.Size(156, 20);
             this.textBoxRefreshInterval.TabIndex = 8;
@@ -478,15 +511,15 @@ namespace BobcatMonitor
             // labelTrigger
             // 
             this.labelTrigger.AutoSize = true;
-            this.labelTrigger.Location = new System.Drawing.Point(21, 237);
+            this.labelTrigger.Location = new System.Drawing.Point(20, 237);
             this.labelTrigger.Name = "labelTrigger";
-            this.labelTrigger.Size = new System.Drawing.Size(207, 13);
+            this.labelTrigger.Size = new System.Drawing.Size(213, 13);
             this.labelTrigger.TabIndex = 7;
-            this.labelTrigger.Text = "Gap treshold - cycle miner if gap is above :";
+            this.labelTrigger.Text = "Gap threshold - cycle miner if gap is above :";
             // 
             // textBoxGap
             // 
-            this.textBoxGap.Location = new System.Drawing.Point(260, 234);
+            this.textBoxGap.Location = new System.Drawing.Point(265, 234);
             this.textBoxGap.Name = "textBoxGap";
             this.textBoxGap.Size = new System.Drawing.Size(156, 20);
             this.textBoxGap.TabIndex = 6;
@@ -495,7 +528,7 @@ namespace BobcatMonitor
             // labelDelay
             // 
             this.labelDelay.AutoSize = true;
-            this.labelDelay.Location = new System.Drawing.Point(16, 277);
+            this.labelDelay.Location = new System.Drawing.Point(17, 277);
             this.labelDelay.Name = "labelDelay";
             this.labelDelay.Size = new System.Drawing.Size(210, 13);
             this.labelDelay.TabIndex = 5;
@@ -504,7 +537,7 @@ namespace BobcatMonitor
             // 
             // textBoxDelay
             // 
-            this.textBoxDelay.Location = new System.Drawing.Point(260, 274);
+            this.textBoxDelay.Location = new System.Drawing.Point(265, 274);
             this.textBoxDelay.Name = "textBoxDelay";
             this.textBoxDelay.Size = new System.Drawing.Size(156, 20);
             this.textBoxDelay.TabIndex = 4;
@@ -521,7 +554,7 @@ namespace BobcatMonitor
             // 
             // textBoxAuthorizationKey
             // 
-            this.textBoxAuthorizationKey.Location = new System.Drawing.Point(261, 62);
+            this.textBoxAuthorizationKey.Location = new System.Drawing.Point(266, 62);
             this.textBoxAuthorizationKey.Name = "textBoxAuthorizationKey";
             this.textBoxAuthorizationKey.Size = new System.Drawing.Size(155, 20);
             this.textBoxAuthorizationKey.TabIndex = 2;
@@ -539,7 +572,7 @@ namespace BobcatMonitor
             // 
             // textBoxIpAddress
             // 
-            this.textBoxIpAddress.Location = new System.Drawing.Point(260, 25);
+            this.textBoxIpAddress.Location = new System.Drawing.Point(265, 25);
             this.textBoxIpAddress.Name = "textBoxIpAddress";
             this.textBoxIpAddress.Size = new System.Drawing.Size(156, 20);
             this.textBoxIpAddress.TabIndex = 0;
@@ -635,7 +668,7 @@ namespace BobcatMonitor
             this.labelAbout3.Name = "labelAbout3";
             this.labelAbout3.Size = new System.Drawing.Size(740, 16);
             this.labelAbout3.TabIndex = 2;
-            this.labelAbout3.Text = "If Gap goes above specified treshhold (default 20), Bobcat will be cycled - Reset" +
+            this.labelAbout3.Text = "If Gap goes above specified threshold (default 20), Bobcat will be cycled - Reset" +
     " + Fast sync  or  Reset + Resync + Fast sync";
             // 
             // labelAbout2
@@ -656,7 +689,7 @@ namespace BobcatMonitor
             this.labelAbout1.Name = "labelAbout1";
             this.labelAbout1.Size = new System.Drawing.Size(498, 25);
             this.labelAbout1.TabIndex = 0;
-            this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.3";
+            this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.4";
             // 
             // BobcatWindowsMonitor
             // 
@@ -731,11 +764,14 @@ namespace BobcatMonitor
         private System.Windows.Forms.ComboBox comboBoxResetOperation;
         private System.Windows.Forms.Label labelresetOperation;
         private System.Windows.Forms.Label labelSettingsComment1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelSettingsComment2;
         private System.Windows.Forms.Button buttonAboutCopyToClipboard;
         private System.Windows.Forms.Label labelAboutHeliumAddress;
         private System.Windows.Forms.Label labelAbourQRCode;
         private System.Windows.Forms.PictureBox pictureBoxQRAddress;
+        private System.Windows.Forms.Label labelFastSyncTreshold;
+        private System.Windows.Forms.TextBox textBoxFastSyncGapThreshold;
+        private System.Windows.Forms.Label labelSettingsComment3;
     }
 }
 

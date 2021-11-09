@@ -35,4 +35,3 @@ C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.csproj.CoreCo
 C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.csproj.CopyComplete
 C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.exe
 C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.pdb
-C:\Development\BobcatMonitor\BobcatMonitor\obj\Debug\BobcatMonitor.csproj.AssemblyReference.cache
