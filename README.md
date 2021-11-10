@@ -7,6 +7,8 @@ If Gap goes above specified threshold (default 20), Bobcat will be automatically
 
 It was developed especially for (but not only) defective and slow Bobcats - some of them are resetting several times a day and are unable to sync.
 The only temporary solution to fix this is RESET + FAST SYNC or RESYNC + FAST SYNC.
+This tool also helps if your (100% working) Bobcat hangs after OTA, goes off chain and needs resync.
+
 
 # Installation
 Download zip file from Binaries directory, extract and run
