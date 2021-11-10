@@ -5,7 +5,7 @@ Bobcat helium miner monitoring and reset/resync tool for Windows
 Bobcat Monitor monitors blockchain Gap and other parameters.
 If Gap goes above specified threshold (default 20), Bobcat will be automatically cycled - Reset + Fast sync  or  Reset + Resync + Fast sync.
 
-It was developed especially for (but not only) defective Bobcat miners - some of them are resetting several times a day and are unable to sync.
+It was developed especially for (but not only) defective and slow Bobcat miners - some of them are resetting several times a day and are unable to sync.
 The only temporary solution to fix this is RESET + FAST SYNC or RESYNC + FAST SYNC.
 
 # Installation
