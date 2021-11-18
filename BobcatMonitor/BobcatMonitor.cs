@@ -48,12 +48,15 @@ namespace BobcatMonitor
                 using (WebClient wc = new WebClient())
                 {                   
                     var deserializedStatus = new Object();
-                    var json = wc.DownloadString("http://" + textBoxIpAddress.Text + "/miner.json");
-                    var miner = JsonConvert.DeserializeObject<dynamic>(json);
+                    var minerjson = wc.DownloadString("http://" + textBoxIpAddress.Text + "/miner.json");
+                    var statusjson = wc.DownloadString("http://" + textBoxIpAddress.Text + "/status.json");
 
-                    gap = Convert.ToInt32(Convert.ToInt32(miner.blockchain_height) - Convert.ToInt32(miner.miner_height));
-                    SetLabelGapResult(gap.ToString());
-                   
+                    var miner = JsonConvert.DeserializeObject<dynamic>(minerjson);
+                    var status = JsonConvert.DeserializeObject<dynamic>(statusjson);
+                    
+                    gap = Convert.ToInt32(Convert.ToInt32(status.blockchain_height) - Convert.ToInt32(status.miner_height));
+                    SetLabelGapResult(gap.ToString());                   
+
                     var lastUpdate = DateTime.Now.ToLongTimeString();
                     SetLabelLastUpdateResult(lastUpdate);
                     var temp0 = GetNumbers(Convert.ToString(miner.temp0));
@@ -65,14 +68,13 @@ namespace BobcatMonitor
 
                     var otaVersion = Convert.ToString(miner.ota_version);
                     SetLabelOtaVersionResult(otaVersion);
-                    var state = Convert.ToString(miner.miner.State);
-                    SetLabelStateResult(state);
-                    var status = Convert.ToString(miner.miner.Status);
-                    SetLabelStatusResult(status);
+                    var minerState = Convert.ToString(miner.miner.State);
+                    SetLabelStateResult(minerState);
+                    var minerStatus = Convert.ToString(miner.miner.Status);
+                    SetLabelStatusResult(minerStatus);
                 }
 
                 return true;
-
             }
 
             catch (WebException ex)

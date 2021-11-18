@@ -689,7 +689,7 @@ namespace BobcatMonitor
             this.labelAbout1.Name = "labelAbout1";
             this.labelAbout1.Size = new System.Drawing.Size(498, 25);
             this.labelAbout1.TabIndex = 0;
-            this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.4";
+            this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.5";
             // 
             // BobcatWindowsMonitor
             // 

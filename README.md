@@ -25,6 +25,9 @@ Thank You
 
 # Release info
 
+v0.5
+Fixed GAP - gap was not correctly displayed (Bobcat changed parameters miner_height and blockchain_height in previous firmware)
+
 v 0.4
 Fast sync will be not run if Gap after reset/resync is below 400.
 
