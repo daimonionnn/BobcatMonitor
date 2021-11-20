@@ -19,7 +19,7 @@ This is Windows only application (Windows forms, .net framework 4.7.2) but I pla
 # Donation
 
 If you like this app and would like to support further development (Linux and cmd version), you can donate some fraction of HNT to my address: 
-13bqR1YiBVYqDf7dSD9TDR5qc3X9D4VcsZK7SyccVjezAYxRTeJ
+13dxLUHWhhxpNRjqLtmxF22ANeoLXPZe3c7JRCJjUJwKgiUJ6Z5
 
 Thank You
 

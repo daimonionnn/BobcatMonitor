@@ -77,7 +77,6 @@ namespace BobcatMonitor
             this.labelIpAddress = new System.Windows.Forms.Label();
             this.textBoxIpAddress = new System.Windows.Forms.TextBox();
             this.tabPageAbout = new System.Windows.Forms.TabPage();
-            this.pictureBoxQRAddress = new System.Windows.Forms.PictureBox();
             this.labelAbourQRCode = new System.Windows.Forms.Label();
             this.buttonAboutCopyToClipboard = new System.Windows.Forms.Button();
             this.labelAboutHeliumAddress = new System.Windows.Forms.Label();
@@ -86,6 +85,7 @@ namespace BobcatMonitor
             this.labelAbout3 = new System.Windows.Forms.Label();
             this.labelAbout2 = new System.Windows.Forms.Label();
             this.labelAbout1 = new System.Windows.Forms.Label();
+            this.pictureBoxQRAddress = new System.Windows.Forms.PictureBox();
             this.tabControlAbout.SuspendLayout();
             this.tabPageMonitoring.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
@@ -598,16 +598,6 @@ namespace BobcatMonitor
             this.tabPageAbout.UseVisualStyleBackColor = true;
             this.tabPageAbout.Click += new System.EventHandler(this.tabPageAbout_Click);
             // 
-            // pictureBoxQRAddress
-            // 
-            this.pictureBoxQRAddress.Image = global::BobcatMonitor.Properties.Resources.QR_receiving_address;
-            this.pictureBoxQRAddress.Location = new System.Drawing.Point(613, 308);
-            this.pictureBoxQRAddress.Name = "pictureBoxQRAddress";
-            this.pictureBoxQRAddress.Size = new System.Drawing.Size(170, 170);
-            this.pictureBoxQRAddress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxQRAddress.TabIndex = 8;
-            this.pictureBoxQRAddress.TabStop = false;
-            // 
             // labelAbourQRCode
             // 
             this.labelAbourQRCode.AutoSize = true;
@@ -634,9 +624,9 @@ namespace BobcatMonitor
             this.labelAboutHeliumAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelAboutHeliumAddress.Location = new System.Drawing.Point(23, 266);
             this.labelAboutHeliumAddress.Name = "labelAboutHeliumAddress";
-            this.labelAboutHeliumAddress.Size = new System.Drawing.Size(406, 16);
+            this.labelAboutHeliumAddress.Size = new System.Drawing.Size(475, 16);
             this.labelAboutHeliumAddress.TabIndex = 5;
-            this.labelAboutHeliumAddress.Text = "13bqR1YiBVYqDf7dSD9TDR5qc3X9D4VcsZK7SyccVjezAYxRTeJ";
+            this.labelAboutHeliumAddress.Text = "13dxLUHWhhxpNRjqLtmxF22ANeoLXPZe3c7JRCJjUJwKgiUJ6Z5                         ";
             this.labelAboutHeliumAddress.Click += new System.EventHandler(this.labelAboutHeliumAddress_Click);
             // 
             // labelAbout5
@@ -690,6 +680,16 @@ namespace BobcatMonitor
             this.labelAbout1.Size = new System.Drawing.Size(498, 25);
             this.labelAbout1.TabIndex = 0;
             this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.5";
+            // 
+            // pictureBoxQRAddress
+            // 
+            this.pictureBoxQRAddress.Image = global::BobcatMonitor.Properties.Resources.QR_receiving_address;
+            this.pictureBoxQRAddress.Location = new System.Drawing.Point(602, 289);
+            this.pictureBoxQRAddress.Name = "pictureBoxQRAddress";
+            this.pictureBoxQRAddress.Size = new System.Drawing.Size(220, 220);
+            this.pictureBoxQRAddress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxQRAddress.TabIndex = 8;
+            this.pictureBoxQRAddress.TabStop = false;
             // 
             // BobcatWindowsMonitor
             // 
