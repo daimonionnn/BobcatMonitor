@@ -21,7 +21,7 @@ namespace BobcatMonitor
         public BobcatWindowsMonitor()
         {
             InitializeComponent();
-            comboBoxResetOperation.SelectedIndex = 1;
+            comboBoxResetOperation.SelectedIndex = 0;
             buttonStopMonitoring.Enabled = false;
         }
 
@@ -55,7 +55,12 @@ namespace BobcatMonitor
                     var status = JsonConvert.DeserializeObject<dynamic>(statusjson);
                     
                     gap = Convert.ToInt32(Convert.ToInt32(status.blockchain_height) - Convert.ToInt32(status.miner_height));
-                    SetLabelGapResult(gap.ToString());                   
+                    SetLabelGapResult(gap.ToString());
+
+                    var minerHeight = Convert.ToString(status.miner_height);
+                    SetLabelMinerHeight(minerHeight);
+                    var blockchainHeight = Convert.ToString(status.blockchain_height);
+                    SetLabelBlockchainHeight(blockchainHeight);
 
                     var lastUpdate = DateTime.Now.ToLongTimeString();
                     SetLabelLastUpdateResult(lastUpdate);
@@ -142,6 +147,36 @@ namespace BobcatMonitor
                 this.labelGapResult.Text = text;
             }
         }
+
+
+        private void SetLabelMinerHeight(string text, bool clear = false)
+        {
+            if (this.labelMinerHeightResult.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetLabelMinerHeight);
+                this.Invoke(d, new object[] { text, clear });
+            }
+            else
+            {
+                this.labelMinerHeightResult.Text = text;
+            }
+        }
+
+
+        private void SetLabelBlockchainHeight(string text, bool clear = false)
+        {
+            if (this.labelBlockchainHeightResult.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetLabelBlockchainHeight);
+                this.Invoke(d, new object[] { text, clear });
+            }
+            else
+            {
+                this.labelBlockchainHeightResult.Text = text;
+            }
+        }
+
+
 
         private void SetLabelTemp0Result(string text, bool clear = false)
         {
@@ -300,38 +335,50 @@ namespace BobcatMonitor
                 {
                     var getDataResult = GetData();
 
-                    try
-                    {
-                        if (getDataResult && (gap >= Convert.ToInt32(textBoxGap.Text)) && comboBoxResetOperation.SelectedIndex > 0)
-                        {
-                            if (comboBoxResetOperation.SelectedIndex == 1 || comboBoxResetOperation.SelectedIndex == 2)
+                        try
+                        { 
+                            int selectedOperation = 0;
+                            comboBoxResetOperation.Invoke(new Action(() => selectedOperation = comboBoxResetOperation.SelectedIndex));
+
+
+                            if (getDataResult && (gap >= Convert.ToInt32(textBoxGap.Text)) && selectedOperation > 0)
                             {
-                                SetRichTextBoxStatus("Gap is " + gap + " !" + " Reseting miner... Waiting " + textBoxDelay.Text + " seconds.", false);
-                                reset();
-
-                                Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
-                            }
-
-                            if (comboBoxResetOperation.SelectedIndex == 2)
-                            {
-                                SetRichTextBoxStatus("Resyncing miner... Waiting " + textBoxDelay.Text + " seconds.", false);
-                                resync();
-                                Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
-                            }
-
-
-                            getDataResult = GetData();
-
-                                var fastSyncGapThreshold = Convert.ToInt32(textBoxFastSyncGapThreshold.Text);
-
-                                if (getDataResult && (gap <= fastSyncGapThreshold) )
+                                if (selectedOperation > 0)
                                 {
-                                    SetRichTextBoxStatus("No need to run Fast sync. Gap is lower than " + textBoxFastSyncGapThreshold.Text, false);
+                                    SetRichTextBoxStatus("Gap is " + gap + " !" + " Reseting miner... Waiting " + textBoxDelay.Text + " seconds.", false);
+                                    reset();
+
+                                    Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
                                 }
-                                else
+
+                                if (selectedOperation == 2 || selectedOperation == 4)
                                 {
-                                    SetRichTextBoxStatus("Fast syncing miner...", false);
-                                    fastSync();
+                                    SetRichTextBoxStatus("Resyncing miner... Waiting " + textBoxDelay.Text + " seconds.", false);
+                                    resync();
+                                    Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
+                                }
+
+
+                                getDataResult = GetData();
+
+                                if (selectedOperation <= 2)
+                                {
+
+                                    var fastSyncGapThreshold = Convert.ToInt32(textBoxFastSyncGapThreshold.Text);
+
+                                    if (getDataResult && (gap <= fastSyncGapThreshold))
+                                    {
+                                        SetRichTextBoxStatus("No need to run Fast sync. Gap is lower than " + textBoxFastSyncGapThreshold.Text, false);
+                                    }
+                                    else if (getDataResult && (gap > 0))
+                                    {
+                                        SetRichTextBoxStatus("Fast syncing miner...", false);
+                                        fastSync();
+                                    }
+                                    else
+                                    {
+                                        SetRichTextBoxStatus("Can't read the GAP. Fast sync will not run. You can run it manually later.", false);
+                                    }
                                 }
                                 
                                 
