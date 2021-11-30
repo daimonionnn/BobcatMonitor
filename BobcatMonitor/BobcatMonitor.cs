@@ -46,37 +46,121 @@ namespace BobcatMonitor
             try
             {
                 using (WebClient wc = new WebClient())
-                {                   
+                {
                     var deserializedStatus = new Object();
                     var minerjson = wc.DownloadString("http://" + textBoxIpAddress.Text + "/miner.json");
                     var statusjson = wc.DownloadString("http://" + textBoxIpAddress.Text + "/status.json");
 
                     var miner = JsonConvert.DeserializeObject<dynamic>(minerjson);
                     var status = JsonConvert.DeserializeObject<dynamic>(statusjson);
-                    
-                    gap = Convert.ToInt32(Convert.ToInt32(status.blockchain_height) - Convert.ToInt32(status.miner_height));
-                    SetLabelGapResult(gap.ToString());
 
-                    var minerHeight = Convert.ToString(status.miner_height);
-                    SetLabelMinerHeight(minerHeight);
-                    var blockchainHeight = Convert.ToString(status.blockchain_height);
-                    SetLabelBlockchainHeight(blockchainHeight);
+                    try
+                    {
+                        gap = Convert.ToInt32(Convert.ToInt32(status.blockchain_height) - Convert.ToInt32(status.miner_height));
+                        SetLabelGapResult(gap.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        SetRichTextBoxStatus("Get data from miner - Gap: " + ex.Message);
+                        SetLabelGapResult("-");
+                    }
+
+                    try
+                    {
+                        var minerHeight = Convert.ToString(status.miner_height);
+                        SetLabelMinerHeight(minerHeight);
+                    }
+                    catch (Exception ex)
+                    {
+                        SetLabelMinerHeight("-");
+                    }
+
+                    try
+                    {
+                        var blockchainHeight = Convert.ToString(status.blockchain_height);
+                        SetLabelBlockchainHeight(blockchainHeight);
+                    }
+                    catch (Exception ex)
+                    {                        
+                        SetLabelBlockchainHeight("-");
+                    }
+
 
                     var lastUpdate = DateTime.Now.ToLongTimeString();
                     SetLabelLastUpdateResult(lastUpdate);
-                    var temp0 = GetNumbers(Convert.ToString(miner.temp0));
-                    SetLabelTemp0Result(temp0);
-                    var temp1 = GetNumbers(Convert.ToString(miner.temp1));
-                    SetLabelTemp1Result(temp1);
-                    var animal = Convert.ToString(miner.animal);
-                    SetLabelAnimal(animal);
 
-                    var otaVersion = Convert.ToString(miner.ota_version);
-                    SetLabelOtaVersionResult(otaVersion);
-                    var minerState = Convert.ToString(miner.miner.State);
-                    SetLabelStateResult(minerState);
-                    var minerStatus = Convert.ToString(miner.miner.Status);
-                    SetLabelStatusResult(minerStatus);
+                    try
+                    {
+                        var temp0 = GetNumbers(Convert.ToString(miner.temp0));
+                        SetLabelTemp0Result(temp0);
+                    }
+                    catch (Exception ex)
+                    {
+                        SetLabelTemp0Result("-");
+                    }
+
+                    try
+                    {
+                        var temp1 = GetNumbers(Convert.ToString(miner.temp1));
+                        SetLabelTemp1Result(temp1);
+                    }
+                    catch (Exception ex)
+                    {
+                        SetLabelTemp1Result("-");
+                    }
+
+                    try
+                    {
+                        var animal = Convert.ToString(miner.animal);
+                        SetLabelAnimal(animal);
+                    }
+                    catch (Exception ex)
+                    {
+                        // No need to do anything
+                    }
+
+                    try
+                    {
+                        var otaVersion = Convert.ToString(miner.ota_version);
+                        SetLabelOtaVersionResult(otaVersion);
+                    }
+                    catch (Exception ex)
+                    {
+                        // No need to do anything
+                    }
+
+                    try
+                    {
+                        var minerState = Convert.ToString(miner.miner.State);
+                        SetLabelStateResult(minerState);
+                    }
+                    catch (Exception ex)
+                    {
+                        SetLabelStateResult("-");
+                    }
+
+                    try
+                    {
+                        var minerStatus = Convert.ToString(miner.miner.Status);
+                        SetLabelStatusResult(minerStatus);
+                    }
+                    catch (Exception ex)
+                    {
+                        SetLabelStatusResult("-");
+                    }
+
+                    try
+                    {
+                        var errors = Convert.ToString(miner.errors);
+                        SetLabelErrorsResult(errors);
+                    }
+                    catch (Exception ex)
+                    {
+                        SetLabelErrorsResult("-");
+                    }
+
+
+
                 }
 
                 return true;
@@ -84,14 +168,14 @@ namespace BobcatMonitor
 
             catch (WebException ex)
             {
-                SetRichTextBoxStatus("Get data from miner:" + ex.Message);
+                SetRichTextBoxStatus("Get data from miner error:" + ex.Message);
                 return false;               
             }
 
             catch (Exception ex)
             {
 
-                SetRichTextBoxStatus("Get data from miner:" + ex.Message);
+                SetRichTextBoxStatus("Get data from miner error:" + ex.Message);
                 return false;               
             }
         }
@@ -296,6 +380,19 @@ namespace BobcatMonitor
             }
         }
 
+        private void SetLabelErrorsResult(string text, bool clear = false)
+        {
+            if (this.labelErrorsResult.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetLabelErrorsResult);
+                this.Invoke(d, new object[] { text, clear });
+            }
+            else
+            {
+                this.labelErrorsResult.Text = text;
+            }
+        }
+
 
         private void SetStartButtonEnabled(bool enabled = true)
         {
@@ -348,14 +445,14 @@ namespace BobcatMonitor
                                     SetRichTextBoxStatus("Gap is " + gap + " !" + " Reseting miner... Waiting " + textBoxDelay.Text + " seconds.", false);
                                     reset();
 
-                                    Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
+                                    Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000 * 60);
                                 }
 
                                 if (selectedOperation == 2 || selectedOperation == 4)
                                 {
                                     SetRichTextBoxStatus("Resyncing miner... Waiting " + textBoxDelay.Text + " seconds.", false);
                                     resync();
-                                    Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000);
+                                    Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000 * 60);
                                 }
 
 
@@ -382,9 +479,9 @@ namespace BobcatMonitor
                                 }
                                 
                                 
-                                var waitAfterCycle = Convert.ToInt32(textBoxWaitAfterCycle.Text) * 1000;
+                                var waitAfterCycle = Convert.ToInt32(textBoxWaitAfterCycle.Text) * 1000 * 60;
 
-                                SetRichTextBoxStatus("Waiting " + waitAfterCycle / 1000 + " seconds.", false);
+                                SetRichTextBoxStatus("Waiting " + waitAfterCycle / 1000 + " minutes.", false);
 
                                 Thread.Sleep(waitAfterCycle);
                             }

@@ -32,6 +32,10 @@ namespace BobcatMonitor
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BobcatWindowsMonitor));
             this.tabControlAbout = new System.Windows.Forms.TabControl();
             this.tabPageMonitoring = new System.Windows.Forms.TabPage();
+            this.labelMinerHeightResult = new System.Windows.Forms.Label();
+            this.labelMinerHeight = new System.Windows.Forms.Label();
+            this.labelBlockchainHeightResult = new System.Windows.Forms.Label();
+            this.labelBlockchain_height = new System.Windows.Forms.Label();
             this.labelOtaVersionResult = new System.Windows.Forms.Label();
             this.labelOtaVersion = new System.Windows.Forms.Label();
             this.labelStateResult = new System.Windows.Forms.Label();
@@ -87,10 +91,8 @@ namespace BobcatMonitor
             this.labelAbout2 = new System.Windows.Forms.Label();
             this.labelAbout1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.labelBlockchainHeightResult = new System.Windows.Forms.Label();
-            this.labelBlockchain_height = new System.Windows.Forms.Label();
-            this.labelMinerHeightResult = new System.Windows.Forms.Label();
-            this.labelMinerHeight = new System.Windows.Forms.Label();
+            this.labelErrorsResult = new System.Windows.Forms.Label();
+            this.labelError = new System.Windows.Forms.Label();
             this.tabControlAbout.SuspendLayout();
             this.tabPageMonitoring.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
@@ -112,6 +114,8 @@ namespace BobcatMonitor
             // 
             // tabPageMonitoring
             // 
+            this.tabPageMonitoring.Controls.Add(this.labelErrorsResult);
+            this.tabPageMonitoring.Controls.Add(this.labelError);
             this.tabPageMonitoring.Controls.Add(this.labelMinerHeightResult);
             this.tabPageMonitoring.Controls.Add(this.labelMinerHeight);
             this.tabPageMonitoring.Controls.Add(this.labelBlockchainHeightResult);
@@ -148,10 +152,46 @@ namespace BobcatMonitor
             this.tabPageMonitoring.Text = "Monitoring";
             this.tabPageMonitoring.UseVisualStyleBackColor = true;
             // 
+            // labelMinerHeightResult
+            // 
+            this.labelMinerHeightResult.AutoSize = true;
+            this.labelMinerHeightResult.Location = new System.Drawing.Point(114, 142);
+            this.labelMinerHeightResult.Name = "labelMinerHeightResult";
+            this.labelMinerHeightResult.Size = new System.Drawing.Size(10, 13);
+            this.labelMinerHeightResult.TabIndex = 29;
+            this.labelMinerHeightResult.Text = "-";
+            // 
+            // labelMinerHeight
+            // 
+            this.labelMinerHeight.AutoSize = true;
+            this.labelMinerHeight.Location = new System.Drawing.Point(15, 142);
+            this.labelMinerHeight.Name = "labelMinerHeight";
+            this.labelMinerHeight.Size = new System.Drawing.Size(68, 13);
+            this.labelMinerHeight.TabIndex = 28;
+            this.labelMinerHeight.Text = "Miner height:";
+            // 
+            // labelBlockchainHeightResult
+            // 
+            this.labelBlockchainHeightResult.AutoSize = true;
+            this.labelBlockchainHeightResult.Location = new System.Drawing.Point(114, 162);
+            this.labelBlockchainHeightResult.Name = "labelBlockchainHeightResult";
+            this.labelBlockchainHeightResult.Size = new System.Drawing.Size(10, 13);
+            this.labelBlockchainHeightResult.TabIndex = 27;
+            this.labelBlockchainHeightResult.Text = "-";
+            // 
+            // labelBlockchain_height
+            // 
+            this.labelBlockchain_height.AutoSize = true;
+            this.labelBlockchain_height.Location = new System.Drawing.Point(15, 162);
+            this.labelBlockchain_height.Name = "labelBlockchain_height";
+            this.labelBlockchain_height.Size = new System.Drawing.Size(95, 13);
+            this.labelBlockchain_height.TabIndex = 26;
+            this.labelBlockchain_height.Text = "Blockchain height:";
+            // 
             // labelOtaVersionResult
             // 
             this.labelOtaVersionResult.AutoSize = true;
-            this.labelOtaVersionResult.Location = new System.Drawing.Point(118, 241);
+            this.labelOtaVersionResult.Location = new System.Drawing.Point(115, 229);
             this.labelOtaVersionResult.Name = "labelOtaVersionResult";
             this.labelOtaVersionResult.Size = new System.Drawing.Size(10, 13);
             this.labelOtaVersionResult.TabIndex = 25;
@@ -160,7 +200,7 @@ namespace BobcatMonitor
             // labelOtaVersion
             // 
             this.labelOtaVersion.AutoSize = true;
-            this.labelOtaVersion.Location = new System.Drawing.Point(18, 241);
+            this.labelOtaVersion.Location = new System.Drawing.Point(15, 229);
             this.labelOtaVersion.Name = "labelOtaVersion";
             this.labelOtaVersion.Size = new System.Drawing.Size(64, 13);
             this.labelOtaVersion.TabIndex = 24;
@@ -169,7 +209,7 @@ namespace BobcatMonitor
             // labelStateResult
             // 
             this.labelStateResult.AutoSize = true;
-            this.labelStateResult.Location = new System.Drawing.Point(118, 218);
+            this.labelStateResult.Location = new System.Drawing.Point(115, 211);
             this.labelStateResult.Name = "labelStateResult";
             this.labelStateResult.Size = new System.Drawing.Size(10, 13);
             this.labelStateResult.TabIndex = 23;
@@ -178,7 +218,7 @@ namespace BobcatMonitor
             // labelState
             // 
             this.labelState.AutoSize = true;
-            this.labelState.Location = new System.Drawing.Point(18, 218);
+            this.labelState.Location = new System.Drawing.Point(15, 211);
             this.labelState.Name = "labelState";
             this.labelState.Size = new System.Drawing.Size(35, 13);
             this.labelState.TabIndex = 22;
@@ -187,7 +227,7 @@ namespace BobcatMonitor
             // labelStatusResult
             // 
             this.labelStatusResult.AutoSize = true;
-            this.labelStatusResult.Location = new System.Drawing.Point(118, 193);
+            this.labelStatusResult.Location = new System.Drawing.Point(115, 192);
             this.labelStatusResult.Name = "labelStatusResult";
             this.labelStatusResult.Size = new System.Drawing.Size(10, 13);
             this.labelStatusResult.TabIndex = 21;
@@ -196,7 +236,7 @@ namespace BobcatMonitor
             // labelStatus
             // 
             this.labelStatus.AutoSize = true;
-            this.labelStatus.Location = new System.Drawing.Point(18, 193);
+            this.labelStatus.Location = new System.Drawing.Point(15, 192);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(40, 13);
             this.labelStatus.TabIndex = 20;
@@ -214,7 +254,7 @@ namespace BobcatMonitor
             // 
             // buttonStopMonitoring
             // 
-            this.buttonStopMonitoring.Location = new System.Drawing.Point(162, 300);
+            this.buttonStopMonitoring.Location = new System.Drawing.Point(185, 310);
             this.buttonStopMonitoring.Name = "buttonStopMonitoring";
             this.buttonStopMonitoring.Size = new System.Drawing.Size(116, 33);
             this.buttonStopMonitoring.TabIndex = 18;
@@ -235,7 +275,7 @@ namespace BobcatMonitor
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(17, 300);
+            this.buttonStart.Location = new System.Drawing.Point(12, 310);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(116, 33);
             this.buttonStart.TabIndex = 16;
@@ -246,27 +286,27 @@ namespace BobcatMonitor
             // labelTemp1Result
             // 
             this.labelTemp1Result.AutoSize = true;
-            this.labelTemp1Result.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelTemp1Result.Location = new System.Drawing.Point(115, 155);
+            this.labelTemp1Result.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelTemp1Result.Location = new System.Drawing.Point(113, 108);
             this.labelTemp1Result.Name = "labelTemp1Result";
-            this.labelTemp1Result.Size = new System.Drawing.Size(14, 20);
+            this.labelTemp1Result.Size = new System.Drawing.Size(12, 16);
             this.labelTemp1Result.TabIndex = 15;
             this.labelTemp1Result.Text = "-";
             // 
             // labelTemp0Result
             // 
             this.labelTemp0Result.AutoSize = true;
-            this.labelTemp0Result.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelTemp0Result.Location = new System.Drawing.Point(115, 130);
+            this.labelTemp0Result.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelTemp0Result.Location = new System.Drawing.Point(113, 91);
             this.labelTemp0Result.Name = "labelTemp0Result";
-            this.labelTemp0Result.Size = new System.Drawing.Size(14, 20);
+            this.labelTemp0Result.Size = new System.Drawing.Size(12, 16);
             this.labelTemp0Result.TabIndex = 14;
             this.labelTemp0Result.Text = "-";
             // 
             // labelLastUpdateResult
             // 
             this.labelLastUpdateResult.AutoSize = true;
-            this.labelLastUpdateResult.Location = new System.Drawing.Point(118, 270);
+            this.labelLastUpdateResult.Location = new System.Drawing.Point(114, 279);
             this.labelLastUpdateResult.Name = "labelLastUpdateResult";
             this.labelLastUpdateResult.Size = new System.Drawing.Size(10, 13);
             this.labelLastUpdateResult.TabIndex = 13;
@@ -275,7 +315,7 @@ namespace BobcatMonitor
             // labelLastUpdate
             // 
             this.labelLastUpdate.AutoSize = true;
-            this.labelLastUpdate.Location = new System.Drawing.Point(18, 270);
+            this.labelLastUpdate.Location = new System.Drawing.Point(14, 279);
             this.labelLastUpdate.Name = "labelLastUpdate";
             this.labelLastUpdate.Size = new System.Drawing.Size(66, 13);
             this.labelLastUpdate.TabIndex = 12;
@@ -285,7 +325,7 @@ namespace BobcatMonitor
             // 
             this.labelGapResult.AutoSize = true;
             this.labelGapResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelGapResult.Location = new System.Drawing.Point(113, 40);
+            this.labelGapResult.Location = new System.Drawing.Point(112, 55);
             this.labelGapResult.Name = "labelGapResult";
             this.labelGapResult.Size = new System.Drawing.Size(15, 20);
             this.labelGapResult.TabIndex = 11;
@@ -293,7 +333,7 @@ namespace BobcatMonitor
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(773, 284);
+            this.buttonRefresh.Location = new System.Drawing.Point(771, 298);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(92, 33);
             this.buttonRefresh.TabIndex = 10;
@@ -304,10 +344,10 @@ namespace BobcatMonitor
             // labelTemp1
             // 
             this.labelTemp1.AutoSize = true;
-            this.labelTemp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelTemp1.Location = new System.Drawing.Point(15, 157);
+            this.labelTemp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelTemp1.Location = new System.Drawing.Point(13, 110);
             this.labelTemp1.Name = "labelTemp1";
-            this.labelTemp1.Size = new System.Drawing.Size(62, 20);
+            this.labelTemp1.Size = new System.Drawing.Size(54, 16);
             this.labelTemp1.TabIndex = 9;
             this.labelTemp1.Text = "Temp1:";
             // 
@@ -315,7 +355,7 @@ namespace BobcatMonitor
             // 
             this.labelGAP.AutoSize = true;
             this.labelGAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelGAP.Location = new System.Drawing.Point(14, 40);
+            this.labelGAP.Location = new System.Drawing.Point(13, 55);
             this.labelGAP.Name = "labelGAP";
             this.labelGAP.Size = new System.Drawing.Size(44, 20);
             this.labelGAP.TabIndex = 8;
@@ -324,17 +364,17 @@ namespace BobcatMonitor
             // labelTemp0
             // 
             this.labelTemp0.AutoSize = true;
-            this.labelTemp0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelTemp0.Location = new System.Drawing.Point(15, 129);
+            this.labelTemp0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelTemp0.Location = new System.Drawing.Point(13, 90);
             this.labelTemp0.Name = "labelTemp0";
-            this.labelTemp0.Size = new System.Drawing.Size(62, 20);
+            this.labelTemp0.Size = new System.Drawing.Size(54, 16);
             this.labelTemp0.TabIndex = 7;
             this.labelTemp0.Text = "Temp0:";
             // 
             // labelStatusRichText
             // 
             this.labelStatusRichText.AutoSize = true;
-            this.labelStatusRichText.Location = new System.Drawing.Point(9, 349);
+            this.labelStatusRichText.Location = new System.Drawing.Point(9, 356);
             this.labelStatusRichText.Name = "labelStatusRichText";
             this.labelStatusRichText.Size = new System.Drawing.Size(40, 13);
             this.labelStatusRichText.TabIndex = 5;
@@ -343,10 +383,10 @@ namespace BobcatMonitor
             // richTextBoxStatus
             // 
             this.richTextBoxStatus.BackColor = System.Drawing.Color.White;
-            this.richTextBoxStatus.Location = new System.Drawing.Point(8, 368);
+            this.richTextBoxStatus.Location = new System.Drawing.Point(8, 376);
             this.richTextBoxStatus.Name = "richTextBoxStatus";
             this.richTextBoxStatus.ReadOnly = true;
-            this.richTextBoxStatus.Size = new System.Drawing.Size(872, 152);
+            this.richTextBoxStatus.Size = new System.Drawing.Size(872, 146);
             this.richTextBoxStatus.TabIndex = 4;
             this.richTextBoxStatus.Text = "";
             this.richTextBoxStatus.TextChanged += new System.EventHandler(this.richTextBoxStatus_TextChanged);
@@ -447,19 +487,19 @@ namespace BobcatMonitor
             this.labelSettingsComment2.AutoSize = true;
             this.labelSettingsComment2.Location = new System.Drawing.Point(21, 441);
             this.labelSettingsComment2.Name = "labelSettingsComment2";
-            this.labelSettingsComment2.Size = new System.Drawing.Size(543, 13);
+            this.labelSettingsComment2.Size = new System.Drawing.Size(517, 13);
             this.labelSettingsComment2.TabIndex = 16;
-            this.labelSettingsComment2.Text = "** Increase pause or Gap threshold if your internet connection is not fast enough" +
-    " to avoid infinite reset/resync loop";
+            this.labelSettingsComment2.Text = "** Increase pause or Gap threshold if your miner/internet is not fast enough to a" +
+    "void infinite reset/resync loop";
             // 
             // labelSettingsComment1
             // 
             this.labelSettingsComment1.AutoSize = true;
             this.labelSettingsComment1.Location = new System.Drawing.Point(20, 422);
             this.labelSettingsComment1.Name = "labelSettingsComment1";
-            this.labelSettingsComment1.Size = new System.Drawing.Size(291, 13);
+            this.labelSettingsComment1.Size = new System.Drawing.Size(269, 13);
             this.labelSettingsComment1.TabIndex = 15;
-            this.labelSettingsComment1.Text = "* Increase delay (default 420) if your miner is not fast enough";
+            this.labelSettingsComment1.Text = "* Increase delay if your miner/internet is not fast enough";
             // 
             // labelresetOperation
             // 
@@ -489,9 +529,9 @@ namespace BobcatMonitor
             this.labelWaitAfterCycle.AutoSize = true;
             this.labelWaitAfterCycle.Location = new System.Drawing.Point(20, 316);
             this.labelWaitAfterCycle.Name = "labelWaitAfterCycle";
-            this.labelWaitAfterCycle.Size = new System.Drawing.Size(268, 13);
+            this.labelWaitAfterCycle.Size = new System.Drawing.Size(264, 13);
             this.labelWaitAfterCycle.TabIndex = 11;
-            this.labelWaitAfterCycle.Text = "** Pause monitor after last RESET/SYNC for (seconds):";
+            this.labelWaitAfterCycle.Text = "** Pause monitor after last RESET/SYNC for (minutes):";
             this.labelWaitAfterCycle.Click += new System.EventHandler(this.labelWaitAfterCycle_Click);
             // 
             // textBoxWaitAfterCycle
@@ -500,7 +540,7 @@ namespace BobcatMonitor
             this.textBoxWaitAfterCycle.Name = "textBoxWaitAfterCycle";
             this.textBoxWaitAfterCycle.Size = new System.Drawing.Size(156, 20);
             this.textBoxWaitAfterCycle.TabIndex = 10;
-            this.textBoxWaitAfterCycle.Text = "7200";
+            this.textBoxWaitAfterCycle.Text = "120";
             // 
             // labelReshreshInterval
             // 
@@ -535,16 +575,16 @@ namespace BobcatMonitor
             this.textBoxGap.Name = "textBoxGap";
             this.textBoxGap.Size = new System.Drawing.Size(156, 20);
             this.textBoxGap.TabIndex = 6;
-            this.textBoxGap.Text = "30";
+            this.textBoxGap.Text = "50";
             // 
             // labelDelay
             // 
             this.labelDelay.AutoSize = true;
             this.labelDelay.Location = new System.Drawing.Point(17, 277);
             this.labelDelay.Name = "labelDelay";
-            this.labelDelay.Size = new System.Drawing.Size(210, 13);
+            this.labelDelay.Size = new System.Drawing.Size(206, 13);
             this.labelDelay.TabIndex = 5;
-            this.labelDelay.Text = "* Delay between RESET/SYNC (seconds):";
+            this.labelDelay.Text = "* Delay between RESET/SYNC (minutes):";
             this.labelDelay.Click += new System.EventHandler(this.labelDelay_Click);
             // 
             // textBoxDelay
@@ -553,7 +593,7 @@ namespace BobcatMonitor
             this.textBoxDelay.Name = "textBoxDelay";
             this.textBoxDelay.Size = new System.Drawing.Size(156, 20);
             this.textBoxDelay.TabIndex = 4;
-            this.textBoxDelay.Text = "420";
+            this.textBoxDelay.Text = "30";
             // 
             // labelAuthorizationKey
             // 
@@ -699,56 +739,36 @@ namespace BobcatMonitor
             this.labelAbout1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelAbout1.Location = new System.Drawing.Point(185, 23);
             this.labelAbout1.Name = "labelAbout1";
-            this.labelAbout1.Size = new System.Drawing.Size(498, 25);
+            this.labelAbout1.Size = new System.Drawing.Size(510, 25);
             this.labelAbout1.TabIndex = 0;
-            this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.6";
+            this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.61";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(35, 489);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(807, 13);
+            this.label1.Size = new System.Drawing.Size(324, 13);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Value lower than 400 should not trigger Fast sync (Bobcat settings). Increase thi" +
-    "s value if Fast sync doesnt work correctly and Gap after reset is not very hight" +
-    " (1000-2000)";
+            this.label1.Text = "Value lower than 400 should not trigger Fast sync (Bobcat settings).";
             // 
-            // labelBlockchainHeightResult
+            // labelErrorsResult
             // 
-            this.labelBlockchainHeightResult.AutoSize = true;
-            this.labelBlockchainHeightResult.Location = new System.Drawing.Point(115, 97);
-            this.labelBlockchainHeightResult.Name = "labelBlockchainHeightResult";
-            this.labelBlockchainHeightResult.Size = new System.Drawing.Size(10, 13);
-            this.labelBlockchainHeightResult.TabIndex = 27;
-            this.labelBlockchainHeightResult.Text = "-";
+            this.labelErrorsResult.AutoSize = true;
+            this.labelErrorsResult.Location = new System.Drawing.Point(115, 246);
+            this.labelErrorsResult.Name = "labelErrorsResult";
+            this.labelErrorsResult.Size = new System.Drawing.Size(10, 13);
+            this.labelErrorsResult.TabIndex = 31;
+            this.labelErrorsResult.Text = "-";
             // 
-            // labelBlockchain_height
+            // labelError
             // 
-            this.labelBlockchain_height.AutoSize = true;
-            this.labelBlockchain_height.Location = new System.Drawing.Point(16, 97);
-            this.labelBlockchain_height.Name = "labelBlockchain_height";
-            this.labelBlockchain_height.Size = new System.Drawing.Size(95, 13);
-            this.labelBlockchain_height.TabIndex = 26;
-            this.labelBlockchain_height.Text = "Blockchain height:";
-            // 
-            // labelMinerHeightResult
-            // 
-            this.labelMinerHeightResult.AutoSize = true;
-            this.labelMinerHeightResult.Location = new System.Drawing.Point(115, 77);
-            this.labelMinerHeightResult.Name = "labelMinerHeightResult";
-            this.labelMinerHeightResult.Size = new System.Drawing.Size(10, 13);
-            this.labelMinerHeightResult.TabIndex = 29;
-            this.labelMinerHeightResult.Text = "-";
-            // 
-            // labelMinerHeight
-            // 
-            this.labelMinerHeight.AutoSize = true;
-            this.labelMinerHeight.Location = new System.Drawing.Point(16, 77);
-            this.labelMinerHeight.Name = "labelMinerHeight";
-            this.labelMinerHeight.Size = new System.Drawing.Size(68, 13);
-            this.labelMinerHeight.TabIndex = 28;
-            this.labelMinerHeight.Text = "Miner height:";
+            this.labelError.AutoSize = true;
+            this.labelError.Location = new System.Drawing.Point(15, 246);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(37, 13);
+            this.labelError.TabIndex = 30;
+            this.labelError.Text = "Errors:";
             // 
             // BobcatWindowsMonitor
             // 
@@ -831,11 +851,13 @@ namespace BobcatMonitor
         private System.Windows.Forms.Label labelFastSyncTreshold;
         private System.Windows.Forms.TextBox textBoxFastSyncGapThreshold;
         private System.Windows.Forms.Label labelSettingsComment3;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelMinerHeightResult;
         private System.Windows.Forms.Label labelMinerHeight;
         private System.Windows.Forms.Label labelBlockchainHeightResult;
         private System.Windows.Forms.Label labelBlockchain_height;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelErrorsResult;
+        private System.Windows.Forms.Label labelError;
     }
 }
 

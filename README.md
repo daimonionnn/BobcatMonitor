@@ -1,4 +1,4 @@
-# Bobcat Monitor and JumpStarter v 0.6 for Windows
+# Bobcat Monitor and JumpStarter v 0.61 for Windows
 Bobcat helium miner monitoring and reset/resync tool for Windows
 
 # Description
@@ -24,14 +24,21 @@ If you like this app and would like to support further development (Linux and cm
 Thank You
 
 # Release info
-v0.6
+
+v 0.61
+- Added monitoring property "errors"
+- Delay times changed from seconds to minutes
+- Adjusted default delay times to higher/safer values
+- Minor fixes
+
+v 0.6
 - Added 2 new types of Reset operarion - "Reset" and "Reset + Resync" (without Fast sync) 
 - Fast sync will not run if miner is not responding after Reset/Resync operation (Message was displayed "Fast syncing...", but it actually did nothing)
 - Default reset operation is now set to "Disabled"
 - Changed default pause value after RESET/SYN to 7200 second (2 hours)
 - Changed default GAP threshold to 30
 
-v0.5
+v 0.5
 Fixed GAP - gap was not correctly displayed (Bobcat changed parameters miner_height and blockchain_height in previous firmware)
 
 v 0.4
