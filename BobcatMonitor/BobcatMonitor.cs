@@ -481,7 +481,7 @@ namespace BobcatMonitor
                                 
                                 var waitAfterCycle = Convert.ToInt32(textBoxWaitAfterCycle.Text) * 1000 * 60;
 
-                                SetRichTextBoxStatus("Waiting " + waitAfterCycle / 1000 + " minutes.", false);
+                                SetRichTextBoxStatus("Waiting " + textBoxWaitAfterCycle.Text + " minutes.", false);
 
                                 Thread.Sleep(waitAfterCycle);
                             }
