@@ -442,7 +442,7 @@ namespace BobcatMonitor
                             {
                                 if (selectedOperation > 0)
                                 {
-                                    SetRichTextBoxStatus("Gap is " + gap + " !" + " Reseting miner... Waiting " + textBoxDelay.Text + " seconds.", false);
+                                    SetRichTextBoxStatus("Gap is " + gap + " !" + " Reseting miner... Waiting " + textBoxDelay.Text + " minutes.", false);
                                     reset();
 
                                     Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000 * 60);
@@ -450,7 +450,7 @@ namespace BobcatMonitor
 
                                 if (selectedOperation == 2 || selectedOperation == 4)
                                 {
-                                    SetRichTextBoxStatus("Resyncing miner... Waiting " + textBoxDelay.Text + " seconds.", false);
+                                    SetRichTextBoxStatus("Resyncing miner... Waiting " + textBoxDelay.Text + " minutes.", false);
                                     resync();
                                     Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000 * 60);
                                 }
