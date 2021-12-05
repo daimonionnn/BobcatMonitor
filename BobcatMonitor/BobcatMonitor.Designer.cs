@@ -32,6 +32,14 @@ namespace BobcatMonitor
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BobcatWindowsMonitor));
             this.tabControlAbout = new System.Windows.Forms.TabControl();
             this.tabPageMonitoring = new System.Windows.Forms.TabPage();
+            this.groupBoxManualcontrols = new System.Windows.Forms.GroupBox();
+            this.checkBoxArmed = new System.Windows.Forms.CheckBox();
+            this.buttonResync = new System.Windows.Forms.Button();
+            this.buttonReboot = new System.Windows.Forms.Button();
+            this.buttonReset = new System.Windows.Forms.Button();
+            this.buttonFastSync = new System.Windows.Forms.Button();
+            this.labelErrorsResult = new System.Windows.Forms.Label();
+            this.labelError = new System.Windows.Forms.Label();
             this.labelMinerHeightResult = new System.Windows.Forms.Label();
             this.labelMinerHeight = new System.Windows.Forms.Label();
             this.labelBlockchainHeightResult = new System.Windows.Forms.Label();
@@ -44,7 +52,6 @@ namespace BobcatMonitor
             this.labelStatus = new System.Windows.Forms.Label();
             this.labelAnimal = new System.Windows.Forms.Label();
             this.buttonStopMonitoring = new System.Windows.Forms.Button();
-            this.buttonFastSync = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
             this.labelTemp1Result = new System.Windows.Forms.Label();
             this.labelTemp0Result = new System.Windows.Forms.Label();
@@ -57,10 +64,8 @@ namespace BobcatMonitor
             this.labelTemp0 = new System.Windows.Forms.Label();
             this.labelStatusRichText = new System.Windows.Forms.Label();
             this.richTextBoxStatus = new System.Windows.Forms.RichTextBox();
-            this.buttonResync = new System.Windows.Forms.Button();
-            this.buttonReset = new System.Windows.Forms.Button();
-            this.buttonReboot = new System.Windows.Forms.Button();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.labelSettingsComment3 = new System.Windows.Forms.Label();
             this.labelFastSyncTreshold = new System.Windows.Forms.Label();
             this.textBoxFastSyncGapThreshold = new System.Windows.Forms.TextBox();
@@ -90,11 +95,9 @@ namespace BobcatMonitor
             this.labelAbout3 = new System.Windows.Forms.Label();
             this.labelAbout2 = new System.Windows.Forms.Label();
             this.labelAbout1 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.labelErrorsResult = new System.Windows.Forms.Label();
-            this.labelError = new System.Windows.Forms.Label();
             this.tabControlAbout.SuspendLayout();
             this.tabPageMonitoring.SuspendLayout();
+            this.groupBoxManualcontrols.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
             this.tabPageAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQRAddress)).BeginInit();
@@ -114,6 +117,7 @@ namespace BobcatMonitor
             // 
             // tabPageMonitoring
             // 
+            this.tabPageMonitoring.Controls.Add(this.groupBoxManualcontrols);
             this.tabPageMonitoring.Controls.Add(this.labelErrorsResult);
             this.tabPageMonitoring.Controls.Add(this.labelError);
             this.tabPageMonitoring.Controls.Add(this.labelMinerHeightResult);
@@ -128,7 +132,6 @@ namespace BobcatMonitor
             this.tabPageMonitoring.Controls.Add(this.labelStatus);
             this.tabPageMonitoring.Controls.Add(this.labelAnimal);
             this.tabPageMonitoring.Controls.Add(this.buttonStopMonitoring);
-            this.tabPageMonitoring.Controls.Add(this.buttonFastSync);
             this.tabPageMonitoring.Controls.Add(this.buttonStart);
             this.tabPageMonitoring.Controls.Add(this.labelTemp1Result);
             this.tabPageMonitoring.Controls.Add(this.labelTemp0Result);
@@ -141,9 +144,6 @@ namespace BobcatMonitor
             this.tabPageMonitoring.Controls.Add(this.labelTemp0);
             this.tabPageMonitoring.Controls.Add(this.labelStatusRichText);
             this.tabPageMonitoring.Controls.Add(this.richTextBoxStatus);
-            this.tabPageMonitoring.Controls.Add(this.buttonResync);
-            this.tabPageMonitoring.Controls.Add(this.buttonReset);
-            this.tabPageMonitoring.Controls.Add(this.buttonReboot);
             this.tabPageMonitoring.Location = new System.Drawing.Point(4, 22);
             this.tabPageMonitoring.Name = "tabPageMonitoring";
             this.tabPageMonitoring.Padding = new System.Windows.Forms.Padding(3);
@@ -151,6 +151,91 @@ namespace BobcatMonitor
             this.tabPageMonitoring.TabIndex = 0;
             this.tabPageMonitoring.Text = "Monitoring";
             this.tabPageMonitoring.UseVisualStyleBackColor = true;
+            this.tabPageMonitoring.Click += new System.EventHandler(this.tabPageMonitoring_Click);
+            // 
+            // groupBoxManualcontrols
+            // 
+            this.groupBoxManualcontrols.Controls.Add(this.checkBoxArmed);
+            this.groupBoxManualcontrols.Controls.Add(this.buttonResync);
+            this.groupBoxManualcontrols.Controls.Add(this.buttonReboot);
+            this.groupBoxManualcontrols.Controls.Add(this.buttonReset);
+            this.groupBoxManualcontrols.Controls.Add(this.buttonFastSync);
+            this.groupBoxManualcontrols.Location = new System.Drawing.Point(760, 25);
+            this.groupBoxManualcontrols.Name = "groupBoxManualcontrols";
+            this.groupBoxManualcontrols.Size = new System.Drawing.Size(105, 319);
+            this.groupBoxManualcontrols.TabIndex = 33;
+            this.groupBoxManualcontrols.TabStop = false;
+            this.groupBoxManualcontrols.Text = "Manual controls";
+            this.groupBoxManualcontrols.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // checkBoxArmed
+            // 
+            this.checkBoxArmed.AutoSize = true;
+            this.checkBoxArmed.Location = new System.Drawing.Point(15, 30);
+            this.checkBoxArmed.Name = "checkBoxArmed";
+            this.checkBoxArmed.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxArmed.TabIndex = 32;
+            this.checkBoxArmed.Text = "ARMED";
+            this.checkBoxArmed.UseVisualStyleBackColor = true;
+            this.checkBoxArmed.CheckedChanged += new System.EventHandler(this.checkBoxArmed_CheckedChanged);
+            // 
+            // buttonResync
+            // 
+            this.buttonResync.Location = new System.Drawing.Point(15, 109);
+            this.buttonResync.Name = "buttonResync";
+            this.buttonResync.Size = new System.Drawing.Size(75, 23);
+            this.buttonResync.TabIndex = 2;
+            this.buttonResync.Text = "Resync";
+            this.buttonResync.UseVisualStyleBackColor = true;
+            this.buttonResync.Click += new System.EventHandler(this.buttonResync_Click);
+            // 
+            // buttonReboot
+            // 
+            this.buttonReboot.Location = new System.Drawing.Point(15, 222);
+            this.buttonReboot.Name = "buttonReboot";
+            this.buttonReboot.Size = new System.Drawing.Size(75, 23);
+            this.buttonReboot.TabIndex = 0;
+            this.buttonReboot.Text = "Reboot";
+            this.buttonReboot.UseVisualStyleBackColor = true;
+            this.buttonReboot.Click += new System.EventHandler(this.buttonReboot_Click);
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Location = new System.Drawing.Point(15, 280);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(75, 23);
+            this.buttonReset.TabIndex = 1;
+            this.buttonReset.Text = "Reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
+            // buttonFastSync
+            // 
+            this.buttonFastSync.Location = new System.Drawing.Point(15, 167);
+            this.buttonFastSync.Name = "buttonFastSync";
+            this.buttonFastSync.Size = new System.Drawing.Size(75, 23);
+            this.buttonFastSync.TabIndex = 17;
+            this.buttonFastSync.Text = "FastSync";
+            this.buttonFastSync.UseVisualStyleBackColor = true;
+            this.buttonFastSync.Click += new System.EventHandler(this.buttonFastSync_Click);
+            // 
+            // labelErrorsResult
+            // 
+            this.labelErrorsResult.AutoSize = true;
+            this.labelErrorsResult.Location = new System.Drawing.Point(115, 246);
+            this.labelErrorsResult.Name = "labelErrorsResult";
+            this.labelErrorsResult.Size = new System.Drawing.Size(10, 13);
+            this.labelErrorsResult.TabIndex = 31;
+            this.labelErrorsResult.Text = "-";
+            // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.Location = new System.Drawing.Point(15, 246);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(37, 13);
+            this.labelError.TabIndex = 30;
+            this.labelError.Text = "Errors:";
             // 
             // labelMinerHeightResult
             // 
@@ -254,30 +339,19 @@ namespace BobcatMonitor
             // 
             // buttonStopMonitoring
             // 
-            this.buttonStopMonitoring.Location = new System.Drawing.Point(185, 310);
+            this.buttonStopMonitoring.Location = new System.Drawing.Point(150, 311);
             this.buttonStopMonitoring.Name = "buttonStopMonitoring";
-            this.buttonStopMonitoring.Size = new System.Drawing.Size(116, 33);
+            this.buttonStopMonitoring.Size = new System.Drawing.Size(105, 33);
             this.buttonStopMonitoring.TabIndex = 18;
             this.buttonStopMonitoring.Text = "Stop monitoring";
             this.buttonStopMonitoring.UseVisualStyleBackColor = true;
             this.buttonStopMonitoring.Click += new System.EventHandler(this.buttonStopMonitoring_Click);
             // 
-            // buttonFastSync
-            // 
-            this.buttonFastSync.Location = new System.Drawing.Point(790, 165);
-            this.buttonFastSync.Name = "buttonFastSync";
-            this.buttonFastSync.Size = new System.Drawing.Size(75, 23);
-            this.buttonFastSync.TabIndex = 17;
-            this.buttonFastSync.Text = "FastSync";
-            this.buttonFastSync.UseVisualStyleBackColor = true;
-            this.buttonFastSync.Visible = false;
-            this.buttonFastSync.Click += new System.EventHandler(this.buttonFastSync_Click);
-            // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(12, 310);
+            this.buttonStart.Location = new System.Drawing.Point(12, 311);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(116, 33);
+            this.buttonStart.Size = new System.Drawing.Size(105, 33);
             this.buttonStart.TabIndex = 16;
             this.buttonStart.Text = "Start monitoring";
             this.buttonStart.UseVisualStyleBackColor = true;
@@ -333,9 +407,9 @@ namespace BobcatMonitor
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(771, 298);
+            this.buttonRefresh.Location = new System.Drawing.Point(406, 311);
             this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(92, 33);
+            this.buttonRefresh.Size = new System.Drawing.Size(105, 33);
             this.buttonRefresh.TabIndex = 10;
             this.buttonRefresh.Text = "Manual Refresh";
             this.buttonRefresh.UseVisualStyleBackColor = true;
@@ -391,39 +465,6 @@ namespace BobcatMonitor
             this.richTextBoxStatus.Text = "";
             this.richTextBoxStatus.TextChanged += new System.EventHandler(this.richTextBoxStatus_TextChanged);
             // 
-            // buttonResync
-            // 
-            this.buttonResync.Location = new System.Drawing.Point(790, 115);
-            this.buttonResync.Name = "buttonResync";
-            this.buttonResync.Size = new System.Drawing.Size(75, 23);
-            this.buttonResync.TabIndex = 2;
-            this.buttonResync.Text = "Resync";
-            this.buttonResync.UseVisualStyleBackColor = true;
-            this.buttonResync.Visible = false;
-            this.buttonResync.Click += new System.EventHandler(this.buttonResync_Click);
-            // 
-            // buttonReset
-            // 
-            this.buttonReset.Location = new System.Drawing.Point(790, 70);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(75, 23);
-            this.buttonReset.TabIndex = 1;
-            this.buttonReset.Text = "Reset";
-            this.buttonReset.UseVisualStyleBackColor = true;
-            this.buttonReset.Visible = false;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
-            // 
-            // buttonReboot
-            // 
-            this.buttonReboot.Location = new System.Drawing.Point(790, 27);
-            this.buttonReboot.Name = "buttonReboot";
-            this.buttonReboot.Size = new System.Drawing.Size(75, 23);
-            this.buttonReboot.TabIndex = 0;
-            this.buttonReboot.Text = "Reboot";
-            this.buttonReboot.UseVisualStyleBackColor = true;
-            this.buttonReboot.Visible = false;
-            this.buttonReboot.Click += new System.EventHandler(this.buttonReboot_Click);
-            // 
             // tabPageSettings
             // 
             this.tabPageSettings.Controls.Add(this.label1);
@@ -454,6 +495,15 @@ namespace BobcatMonitor
             this.tabPageSettings.Text = "Settings";
             this.tabPageSettings.UseVisualStyleBackColor = true;
             this.tabPageSettings.Click += new System.EventHandler(this.tabPageSettings_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(35, 489);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(324, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Value lower than 400 should not trigger Fast sync (Bobcat settings).";
             // 
             // labelSettingsComment3
             // 
@@ -515,10 +565,10 @@ namespace BobcatMonitor
             this.comboBoxResetOperation.FormattingEnabled = true;
             this.comboBoxResetOperation.Items.AddRange(new object[] {
             "Disabled",
-            "Reset + Fast sync",
+            "Resync + Fast sync (default)",
             "Reset + Resync + Fast sync",
-            "Reset",
-            "Reset + Resync"});
+            "Fast sync",
+            "Reboot"});
             this.comboBoxResetOperation.Location = new System.Drawing.Point(291, 190);
             this.comboBoxResetOperation.Name = "comboBoxResetOperation";
             this.comboBoxResetOperation.Size = new System.Drawing.Size(156, 21);
@@ -718,10 +768,11 @@ namespace BobcatMonitor
             this.labelAbout3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelAbout3.Location = new System.Drawing.Point(26, 127);
             this.labelAbout3.Name = "labelAbout3";
-            this.labelAbout3.Size = new System.Drawing.Size(740, 16);
+            this.labelAbout3.Size = new System.Drawing.Size(553, 16);
             this.labelAbout3.TabIndex = 2;
-            this.labelAbout3.Text = "If Gap goes above specified threshold (default 20), Bobcat will be cycled - Reset" +
-    " + Fast sync  or  Reset + Resync + Fast sync";
+            this.labelAbout3.Text = "If Gap goes above specified threshold, Bobcat will be cycled (default is Resync +" +
+    " Fast sync).";
+            this.labelAbout3.Click += new System.EventHandler(this.labelAbout3_Click);
             // 
             // labelAbout2
             // 
@@ -741,34 +792,8 @@ namespace BobcatMonitor
             this.labelAbout1.Name = "labelAbout1";
             this.labelAbout1.Size = new System.Drawing.Size(510, 25);
             this.labelAbout1.TabIndex = 0;
-            this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.61";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 489);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(324, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Value lower than 400 should not trigger Fast sync (Bobcat settings).";
-            // 
-            // labelErrorsResult
-            // 
-            this.labelErrorsResult.AutoSize = true;
-            this.labelErrorsResult.Location = new System.Drawing.Point(115, 246);
-            this.labelErrorsResult.Name = "labelErrorsResult";
-            this.labelErrorsResult.Size = new System.Drawing.Size(10, 13);
-            this.labelErrorsResult.TabIndex = 31;
-            this.labelErrorsResult.Text = "-";
-            // 
-            // labelError
-            // 
-            this.labelError.AutoSize = true;
-            this.labelError.Location = new System.Drawing.Point(15, 246);
-            this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(37, 13);
-            this.labelError.TabIndex = 30;
-            this.labelError.Text = "Errors:";
+            this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.62";
+            this.labelAbout1.Click += new System.EventHandler(this.labelAbout1_Click);
             // 
             // BobcatWindowsMonitor
             // 
@@ -784,6 +809,8 @@ namespace BobcatMonitor
             this.tabControlAbout.ResumeLayout(false);
             this.tabPageMonitoring.ResumeLayout(false);
             this.tabPageMonitoring.PerformLayout();
+            this.groupBoxManualcontrols.ResumeLayout(false);
+            this.groupBoxManualcontrols.PerformLayout();
             this.tabPageSettings.ResumeLayout(false);
             this.tabPageSettings.PerformLayout();
             this.tabPageAbout.ResumeLayout(false);
@@ -858,6 +885,8 @@ namespace BobcatMonitor
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelErrorsResult;
         private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.CheckBox checkBoxArmed;
+        private System.Windows.Forms.GroupBox groupBoxManualcontrols;
     }
 }
 

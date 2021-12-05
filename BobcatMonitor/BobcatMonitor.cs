@@ -23,6 +23,15 @@ namespace BobcatMonitor
             InitializeComponent();
             comboBoxResetOperation.SelectedIndex = 0;
             buttonStopMonitoring.Enabled = false;
+            checkBoxArmed.Appearance = System.Windows.Forms.Appearance.Button;
+
+            checkBoxArmed.TextAlign = ContentAlignment.MiddleCenter;
+            checkBoxArmed.MinimumSize = new Size(75, 25); //To prevent shrinkage!
+
+            buttonResync.Enabled = false;
+            buttonFastSync.Enabled = false;
+            buttonReboot.Enabled = false;
+            buttonReset.Enabled = false;
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
@@ -440,7 +449,7 @@ namespace BobcatMonitor
 
                             if (getDataResult && (gap >= Convert.ToInt32(textBoxGap.Text)) && selectedOperation > 0)
                             {
-                                if (selectedOperation > 0)
+                                if (selectedOperation == 2)
                                 {
                                     SetRichTextBoxStatus("Gap is " + gap + " !" + " Reseting miner... Waiting " + textBoxDelay.Text + " minutes.", false);
                                     reset();
@@ -448,7 +457,7 @@ namespace BobcatMonitor
                                     Thread.Sleep(Convert.ToInt32(textBoxDelay.Text) * 1000 * 60);
                                 }
 
-                                if (selectedOperation == 2 || selectedOperation == 4)
+                                if ((selectedOperation == 1) || (selectedOperation == 2))
                                 {
                                     SetRichTextBoxStatus("Resyncing miner... Waiting " + textBoxDelay.Text + " minutes.", false);
                                     resync();
@@ -458,7 +467,7 @@ namespace BobcatMonitor
 
                                 getDataResult = GetData();
 
-                                if (selectedOperation <= 2)
+                                if ((selectedOperation == 1) || (selectedOperation == 2) || (selectedOperation == 3))
                                 {
 
                                     var fastSyncGapThreshold = Convert.ToInt32(textBoxFastSyncGapThreshold.Text);
@@ -477,8 +486,13 @@ namespace BobcatMonitor
                                         SetRichTextBoxStatus("Can't read the GAP. Fast sync will not run. You can run it manually later.", false);
                                     }
                                 }
-                                
-                                
+
+                                if (selectedOperation == 4)
+                                {
+                                    SetRichTextBoxStatus("Rebooting miner...", false);
+                                    reboot();
+                                }
+
                                 var waitAfterCycle = Convert.ToInt32(textBoxWaitAfterCycle.Text) * 1000 * 60;
 
                                 SetRichTextBoxStatus("Waiting " + textBoxWaitAfterCycle.Text + " minutes.", false);
@@ -699,6 +713,51 @@ namespace BobcatMonitor
             richTextBoxStatus.SelectionStart = richTextBoxStatus.Text.Length;
             // scroll it automatically
             richTextBoxStatus.ScrollToCaret();
+        }
+
+        private void checkBoxArmed_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxArmed.Text == "UNARMED")
+            {
+               // checkBoxArmed.BackColor = Color.Yellow; //symbolizes light turned on
+                checkBoxArmed.Text = "ARMED";
+
+                buttonResync.Enabled = false;
+                buttonFastSync.Enabled = false;
+                buttonReboot.Enabled = false;
+                buttonReset.Enabled = false;
+            }
+
+            else if (checkBoxArmed.Text == "ARMED")
+            {
+               // checkBoxArmed.BackColor = Color.Crimson; //symbolizes light turned off
+                checkBoxArmed.Text = "UNARMED";
+
+                buttonResync.Enabled = true;
+                buttonFastSync.Enabled = true;
+                buttonReboot.Enabled = true;
+                buttonReset.Enabled = true;
+            }
+        }
+
+        private void tabPageMonitoring_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelAbout1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelAbout3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
