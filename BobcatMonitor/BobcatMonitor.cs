@@ -27,7 +27,7 @@ namespace BobcatMonitor
             checkBoxArmed.Appearance = System.Windows.Forms.Appearance.Button;
 
             checkBoxArmed.TextAlign = ContentAlignment.MiddleCenter;
-            checkBoxArmed.MinimumSize = new Size(75, 25); //To prevent shrinkage!
+            checkBoxArmed.MinimumSize = new Size(82, 25); //To prevent shrinkage!
 
             buttonResync.Enabled = false;
             buttonFastSync.Enabled = false;
@@ -723,7 +723,7 @@ namespace BobcatMonitor
 
         private void checkBoxArmed_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxArmed.Text == "UNARMED")
+            if (checkBoxArmed.Text == "DISARMED")
             {
                // checkBoxArmed.BackColor = Color.Yellow; //symbolizes light turned on
                 checkBoxArmed.Text = "ARMED";
@@ -737,7 +737,7 @@ namespace BobcatMonitor
             else if (checkBoxArmed.Text == "ARMED")
             {
                // checkBoxArmed.BackColor = Color.Crimson; //symbolizes light turned off
-                checkBoxArmed.Text = "UNARMED";
+                checkBoxArmed.Text = "DISARMED";
 
                 buttonResync.Enabled = true;
                 buttonFastSync.Enabled = true;
