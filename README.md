@@ -25,9 +25,10 @@ Thank You
 
 # Release info
 
-v 0.62
+v 0.7
 - Changed types of reset operation and added Reboot
 - Added manual controls (Reboot, Resync, Fast sync, Reset)
+- Icon in app and Taskbar changes color to RED or GREEN according GAP (below 10 = green, above 10 = red)
 
 
 v 0.61

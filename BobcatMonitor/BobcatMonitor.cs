@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BobcatMonitor.Properties;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ using System.Windows.Forms;
 namespace BobcatMonitor
 {
     public partial class BobcatWindowsMonitor : Form
-    {
+    {       
 
         int gap = 0;
         bool monitoringStopped = false;
@@ -32,6 +33,9 @@ namespace BobcatMonitor
             buttonFastSync.Enabled = false;
             buttonReboot.Enabled = false;
             buttonReset.Enabled = false;
+
+            this.Icon = ((System.Drawing.Icon)Resources.ResourceManager.GetObject("recycler_red"));
+           // this.Icon = Resources.recycler_red;
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
@@ -230,11 +234,13 @@ namespace BobcatMonitor
 
                 if (Convert.ToInt32(text) > 10)
                 {
-                    this.labelGapResult.ForeColor = Color.Red;
+                    this.labelGapResult.ForeColor = Color.Red;                    
+                    this.Icon = ((System.Drawing.Icon)Resources.ResourceManager.GetObject("recycler_red"));
                 }
                 else
                 {
                     this.labelGapResult.ForeColor = Color.Green;
+                    this.Icon = ((System.Drawing.Icon)Resources.ResourceManager.GetObject("recycler_green"));                    
                 }
 
                 this.labelGapResult.Text = text;

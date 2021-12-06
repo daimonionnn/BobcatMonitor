@@ -790,9 +790,9 @@ namespace BobcatMonitor
             this.labelAbout1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelAbout1.Location = new System.Drawing.Point(185, 23);
             this.labelAbout1.Name = "labelAbout1";
-            this.labelAbout1.Size = new System.Drawing.Size(510, 25);
+            this.labelAbout1.Size = new System.Drawing.Size(498, 25);
             this.labelAbout1.TabIndex = 0;
-            this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.62";
+            this.labelAbout1.Text = "Bobcat Monitor and JumpStarter for Windows v 0.7";
             this.labelAbout1.Click += new System.EventHandler(this.labelAbout1_Click);
             // 
             // BobcatWindowsMonitor
