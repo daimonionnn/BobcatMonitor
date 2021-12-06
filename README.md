@@ -1,4 +1,4 @@
-# Bobcat Monitor and JumpStarter v 0.62 for Windows
+# Bobcat Monitor and JumpStarter v 0.7 for Windows
 Bobcat helium miner monitoring and reset/resync tool for Windows
 
 # Description
