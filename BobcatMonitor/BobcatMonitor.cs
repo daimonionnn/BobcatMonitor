@@ -723,10 +723,10 @@ namespace BobcatMonitor
 
         private void checkBoxArmed_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxArmed.Text == "DISARMED")
+            if (checkBoxArmed.Text == "ARMED")
             {
                // checkBoxArmed.BackColor = Color.Yellow; //symbolizes light turned on
-                checkBoxArmed.Text = "ARMED";
+                checkBoxArmed.Text = "DISARMED";
 
                 buttonResync.Enabled = false;
                 buttonFastSync.Enabled = false;
@@ -734,10 +734,10 @@ namespace BobcatMonitor
                 buttonReset.Enabled = false;
             }
 
-            else if (checkBoxArmed.Text == "ARMED")
+            else if (checkBoxArmed.Text == "DISARMED")
             {
                // checkBoxArmed.BackColor = Color.Crimson; //symbolizes light turned off
-                checkBoxArmed.Text = "DISARMED";
+                checkBoxArmed.Text = "ARMED";
 
                 buttonResync.Enabled = true;
                 buttonFastSync.Enabled = true;

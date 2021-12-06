@@ -173,9 +173,9 @@ namespace BobcatMonitor
             this.checkBoxArmed.AutoSize = true;
             this.checkBoxArmed.Location = new System.Drawing.Point(12, 30);
             this.checkBoxArmed.Name = "checkBoxArmed";
-            this.checkBoxArmed.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxArmed.Size = new System.Drawing.Size(83, 17);
             this.checkBoxArmed.TabIndex = 32;
-            this.checkBoxArmed.Text = "ARMED";
+            this.checkBoxArmed.Text = "DISARMED";
             this.checkBoxArmed.UseVisualStyleBackColor = true;
             this.checkBoxArmed.CheckedChanged += new System.EventHandler(this.checkBoxArmed_CheckedChanged);
             // 
