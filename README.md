@@ -1,4 +1,4 @@
-##### Project is no longer mantained, probably doestn work anymore with new Bobcat firmware versions #####
+# Project is no longer mantained, it probably doesnt work anymore with new Bobcat firmware (light hotspot) #
 
 
 # Bobcat Monitor and JumpStarter v 0.7 for Windows
