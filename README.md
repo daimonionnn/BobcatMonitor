@@ -1,3 +1,6 @@
+##### Project is no longer mantained, probably doestn work anymore with new Bobcat firmware versions #####
+
+
 # Bobcat Monitor and JumpStarter v 0.7 for Windows
 Bobcat helium miner monitoring and reset/resync tool for Windows
 
